@@ -87,3 +87,29 @@ clj꞉influencerTracker.core꞉> 
 clj꞉influencerTracker.core꞉> 
 #'influencerTracker.core/my_routes
 clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:34:5).
+; No such namespace: db
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
+; No such namespace: view
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.view/update-influencer-form
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.core/show-update-view
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/update-influencer
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:48:59).
+; Unable to resolve symbol: update-movie in this context
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/my_routes
+clj꞉influencerTracker.core꞉> 
+(db/get-influencer-by-id 1)
+[{:id 1, :username "summit1g", :game "Grand Theft Auto V", :views 34869, :language "en", :timestamp #inst "2021-03-01T12:48:59.000000000-00:00"}]
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.view/update-influencer-form
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.db/update-influencer
+clj꞉influencerTracker.db꞉> 
+#'influencerTracker.handler/routes
+clj꞉influencerTracker.handler꞉> 

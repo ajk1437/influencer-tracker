@@ -9,6 +9,7 @@
 
 (defroutes routes
   core/my_routes
+  (route/not-found "Not Found")
   (route/resources "/"))
 
 (def app
