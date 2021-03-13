@@ -16,61 +16,24 @@
 ;   - Clojure lines in stack traces are peekable and clickable.
 clj꞉user꞉> 
 ; Evaluating file: db.clj
-#'influencerTracker.db/get-all-influencer
+#'influencerTracker.db/update-influencer
 clj꞉influencerTracker.db꞉> 
+; Evaluating file: layout.clj
+#'influencerTracker.layout/not-found
+clj꞉influencerTracker.layout꞉> 
+; Evaluating file: view.clj
+#'influencerTracker.view/index-page
+clj꞉influencerTracker.view꞉> 
 ; Evaluating file: core.clj
-#'influencerTracker.core/app
-clj꞉influencerTracker.core꞉> 
-; Evaluating file: handler.clj
-#'influencerTracker.handler/app
-clj꞉influencerTracker.handler꞉> 
-; Execution error (FileNotFoundException) at influencerTracker.view/eval8167$loading (form-init17557427567863056311.clj:1).
-; Could not locate movieApp/layout__init.class, movieApp/layout.clj or movieApp/layout.cljc on classpath.
+; Syntax error reading source at (D:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:34:1).
+; EOF while reading, starting at line 19
+; Evaluation of file core.clj failed: class clojure.lang.Compiler$CompilerException
+
 clj꞉influencerTracker.view꞉> 
-; Syntax error reading source at (influencerTracker\layout.clj:18:1).
-; EOF while reading, starting at line 1
-clj꞉influencerTracker.view꞉> 
-; Syntax error reading source at (influencerTracker\layout.clj:18:1).
-; EOF while reading, starting at line 1
-clj꞉influencerTracker.view꞉> 
-nil
-clj꞉influencerTracker.layout꞉> 
-nil
-clj꞉influencerTracker.layout꞉> 
-nil
-clj꞉influencerTracker.layout꞉> 
-#'influencerTracker.layout/common-layout
-clj꞉influencerTracker.layout꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:24:5).
-; Unable to resolve symbol: inflencers in this context
-clj꞉influencerTracker.view꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:24:5).
-; Unable to resolve symbol: inflencers in this context
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/index-page
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:24:5).
-; Unable to resolve symbol: inflencers in this context
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/index-page
-clj꞉influencerTracker.view꞉> 
-nil
 clj꞉influencerTracker.core꞉> 
 nil
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/db-connection
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/create-influencer
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/get-all-influencers
-clj꞉influencerTracker.db꞉> 
-nil
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/is-numeric
 clj꞉influencerTracker.core꞉> 
 #'influencerTracker.core/display-all-influencers
 clj꞉influencerTracker.core꞉> 
@@ -78,66 +41,49 @@ clj꞉influencerTracker.core꞉> 
 clj꞉influencerTracker.core꞉> 
 #'influencerTracker.core/my_routes
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/not-found
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.core/not-found
+#'influencerTracker.core/app
 clj꞉influencerTracker.core꞉> 
-; Evaluating file: db.clj
-; Syntax error compiling at (D:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\db.clj:21:12).
-; Unable to resolve symbol: connection in this context
-; Evaluation of file db.clj failed: class clojure.lang.Compiler$CompilerException
-
+(create-influencer "neCA" "wAR" "11" "srb" )
+#'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-clj꞉influencerTracker.db꞉> 
-nil
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/db-connection
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/create-influencer
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/get-all-influencers
-clj꞉influencerTracker.db꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\db.clj:21:12).
-; Unable to resolve symbol: connection in this context
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/get-influencer-by-id
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/delete-influencer
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/update-influencer
-clj꞉influencerTracker.db꞉> 
-(get-influencer-by-id 2)
-[{:id 2, :username "Gaules", :game "Counter-Strike: Global Offensive", :views 26856, :language "en", :timestamp #inst "2021-04-01T12:19:04.000000000-00:00"}]
-clj꞉influencerTracker.db꞉> 
-(update-influencer 2 "Gaules" "Counter-Strike: Global Offensive" 33333 "rus" (new java.util.Date))
-; Execution error (SQLSyntaxErrorException) at com.mysql.cj.jdbc.exceptions.SQLError/createSQLException (SQLError.java:120).
-; Table 'influencers.movie' doesn't exist
-clj꞉influencerTracker.db꞉> 
-#'influencerTracker.db/update-influencer
-clj꞉influencerTracker.db꞉> 
-(update-influencer 2 "Gaules" "Counter-Strike: Global Offensive" 33333 "rus" (new java.util.Date))
-clj꞉influencerTracker.db꞉> 
-(get-influencer-by-id 2)
-[{:id 2, :username "Gaules", :game "Counter-Strike: Global Offensive", :views 33333, :language "rus", :timestamp #inst "2021-03-13T12:57:55.000000000-00:00"}]
-clj꞉influencerTracker.db꞉> 
-(delete-influencer 2)
-(1)
-clj꞉influencerTracker.db꞉> 
-(get)
-; Execution error (ArityException) at influencerTracker.db/eval11804 (form-init17557427567863056311.clj:126).
-; Wrong number of args (0) passed to: clojure.core/get
-clj꞉influencerTracker.db꞉> 
-(get-all-influencers)
-[{:id 1, :username "summit1g", :game "Grand Theft Auto V", :views 34869, :language "en", :timestamp #inst "2021-03-01T12:48:59.000000000-00:00"} {:id 3, :username "Faker", :game "League of Legends", :views 29005, :language "ko", :timestamp #inst "2021-05-01T14:04:18.000000000-00:00"} {:id 4, :username "auronplay", :game "Just Chatting", :views 88130, :language "en", :timestamp #inst "2020-03-01T16:04:27.000000000-00:00"} {:id 5, :username "tommyinnit", :game "Minecraft", :views 172712, :language "en", :timestamp #inst "2020-06-01T17:49:50.000000000-00:00"} {:id 10, :username "AJK", :game "Warcraft 3:Frozen Throne", :views 37000, :language "srb", :timestamp #inst "2021-03-13T12:05:01.000000000-00:00"}]
-clj꞉influencerTracker.db꞉> 
-(create-influencer 2 "Gaules" "Counter-Strike: Global Offensive" 33333 "rus" (new java.util.Date))
-; Execution error (ArityException) at influencerTracker.db/eval11808 (form-init17557427567863056311.clj:133).
-; Wrong number of args (6) passed to: influencerTracker.db/create-influencer
-clj꞉influencerTracker.db꞉> 
-(create-influencer  "Gaules" "Counter-Strike: Global Offensive" 33333 "rus" (new java.util.Date))
-; Execution error (ArityException) at influencerTracker.db/eval11810 (form-init17557427567863056311.clj:137).
-; Wrong number of args (5) passed to: influencerTracker.db/create-influencer
-clj꞉influencerTracker.db꞉> 
-(create-influencer  "Gaules" "Counter-Strike: Global Offensive" 33333 "rus")
-(1)
-clj꞉influencerTracker.db꞉> 
+(create-influencer "neCA" "wAR" "11" "srb")
+{:status 302, :headers {"Location" "/"}, :body ""}
+clj꞉influencerTracker.core꞉> 
+(create-influencer "neCA" "wAR" 1111 "")
+{:status 302, :headers {"Location" "/"}, :body ""}
+clj꞉influencerTracker.core꞉> 
+(create-influencer "neCA" "wAR" 1111 "srb")
+{:status 302, :headers {"Location" "/"}, :body ""}
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:21:5).
+; No such var: db/create-movie
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:21:5).
+; No such var: db/create-movie
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/display-all-influencers
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:27:7).
+; Unable to resolve symbol: resource-response in this context
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/wrap-return-favicon
+clj꞉influencerTracker.core꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (3) passed to: ring.middleware.defaults/wrap-defaults
+clj꞉influencerTracker.core꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (3) passed to: ring.middleware.defaults/wrap-defaults
+clj꞉influencerTracker.core꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (3) passed to: influencerTracker.core/wrap-return-favicon
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/delete-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/my_routes
+clj꞉influencerTracker.core꞉> 

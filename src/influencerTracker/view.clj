@@ -33,10 +33,30 @@
         [:td [:a {:href (str "/delete/" (h (:id influencer)))} "Remove"]]
         [:td [:a {:href (str "/update/" (h (:id influencer)))} "Edit"]]]) influencers)]])
 
+(defn- influencer-form []
+   [:div {:class "form-group card"}
+    [:h1 {:class "text-center"} "Add influencer"]
+    (form/form-to [:post "/"]
+                  (anti-forgery/anti-forgery-field)
+                  [:div {:class "form-group"}
+                   (form/label "username" "Username")
+                   (form/text-field {:class "form-control"} "username")]
+                  [:div {:class "form-group"}
+                   (form/label "game" "Game")
+                   (form/text-field {:class "form-control"} "game")]
+                  [:div {:class "form-group"}
+                   (form/label "views" "Views ")
+                   (form/text-field {:class "form-control"}  "views")]
+                  [:div {:class "form-group"}
+                   (form/label "language" "Language")
+                   (form/text-field {:class "form-control"}  "language")]
+                  (form/submit-button {:class "btn btn-primary btn-lg btn-block"}  "Add influencer")
+                  [:br])])
 
 (defn index-page [influencers]
   (layout/common-layout ""
                         [:div {:class "col-lg-1"}]
                         [:div {:class "col-lg-10"}
+                         (influencer-form)
                          (display-all-influencers influencers)]
                         [:div {:class "col-lg-1"}]))

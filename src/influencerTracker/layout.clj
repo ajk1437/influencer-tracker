@@ -12,3 +12,6 @@
     [:div {:class "header"}
      [:h1 {:class "container"} header]]
     [:div {:id "content" :class "container"} body]]))
+
+(defn not-found []
+  (common-layout "NOT FOUND" [:div {:id "error"} "Unfortunately, the page you requested could not be found!!!"]))

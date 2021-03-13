@@ -10,21 +10,33 @@
              [influencerTracker.db :as db]
              [influencerTracker.view :as view]))
 
-(defn- not-found []
-  (influencerTracker.view/not-found))
+(defn is-numeric [x]
+  {:pre [(number? x)]})
 
-(defn- display-all-influencers []
+(defn display-all-influencers []
   (view/index-page (db/get-all-influencers)))
 
-(defn- create-influencer [username game views language timestamp]
+(defn create-influencer [username game views language]
   (when-not (str/blank? username)
-    (db/create-influencer username game views language timestamp))
+    (db/create-influencer username game views language))
   (ring/redirect "/"))
+
+(defn delete-influencer [id]
+  (when-not (str/blank? id)
+    (db/delete-influencer id))
+  (ring/redirect "/"))
+
+(defn wrap-return-favicon [handler]
+  (fn [req]
+    (if (= [:get "/favicon.ico"] [(:request-method req) (:uri req)])
+      (ring/resource-response "favicon.ico" {:root "public/img"})
+      (handler req))))
 
 (defroutes my_routes
   (GET "/" [] (display-all-influencers))
-  (POST "/" [username game views language] (db/create-influencer username game views language)))
+  (POST "/" [username game views language] (db/create-influencer username game views language))
+  (GET "/delete/:id" [id]  (delete-influencer id)))
 
 (def app
-  (wrap-defaults my_routes site-defaults))
+  (wrap-defaults my_routes site-defaults ))
 
