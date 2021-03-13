@@ -5,13 +5,15 @@
 
 (defn- navbar []
   [:nav {:class "navbar navbar-dark bg-dark"}
-   [:a {:class "navbar-brand" :href "/"} "Twitch influencers!"]
+   [:a {:class "navbar-brand" :href "/"} 
+    [:img {:src "/logo.png" :style "width: 35px;"} " Twitch influencers!"]]
    [:a {:class "navbar-brand" :href "/add-influencer"} "Add influencer"]])
 
 (defn common-layout [header & body]
   (h/html5
    [:head
     [:title "Influencer tracker"]
+    [:link {:rel "schortcut icon" :type "image/png" :href "/logo.png"}]
     (include-css "/css/bootstrap.css")]
    [:body
     (navbar)

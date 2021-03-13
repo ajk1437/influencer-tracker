@@ -176,3 +176,43 @@ clj꞉influencerTracker.handler꞉> 
 clj꞉influencerTracker.handler꞉> 
 #'influencerTracker.handler/routes
 clj꞉influencerTracker.handler꞉> 
+nil
+clj꞉influencerTracker.view꞉> 
+nil
+clj꞉influencerTracker.view꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:1:1).
+; Found lib name 'clj-time.format' containing period with prefix 'quote'.  lib names inside prefix lists must not contain periods
+clj꞉influencerTracker.view꞉> 
+; Execution error (IllegalStateException) at influencerTracker.view/eval17582$loading (form-init434724240662729287.clj:1).
+; Alias f already exists in namespace influencerTracker.view, aliasing formative.core
+clj꞉influencerTracker.view꞉> 
+; Execution error (IllegalStateException) at influencerTracker.view/eval17588$loading (form-init434724240662729287.clj:1).
+; Alias f already exists in namespace influencerTracker.view, aliasing formative.core
+clj꞉influencerTracker.view꞉> 
+nil
+clj꞉influencerTracker.view꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:33:17).
+; No such var: format/format
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+nil
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/custom-formatter
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 
+nil
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.view/display-all-influencers
+clj꞉influencerTracker.view꞉> 

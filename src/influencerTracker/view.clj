@@ -1,11 +1,14 @@
 (ns influencerTracker.view
   (:use hiccup.page hiccup.element)
-  (:require
-   [hiccup.core :refer [h]]
-   [hiccup.form :as form]
-   [clojure.string :as str]
-   [influencerTracker.layout :as layout]
-   [ring.util.anti-forgery :as anti-forgery]))
+  (:require [hiccup.core :refer [h]]
+            [hiccup.form :as form]
+            [clojure.string :as str]
+            [influencerTracker.layout :as layout]
+            [ring.util.anti-forgery :as anti-forgery]
+            [clj-time.format :as fmt]
+            [clj-time.core :as t]))
+
+ (def custom-formatter (fmt/formatter "yyyy-MM-dd"))
 
 (defn display-all-influencers [influencers]
   [:div
@@ -17,7 +20,7 @@
      [:th {:scope "col"} "#"]
      [:th {:scope "col"} "Username"]
      [:th {:scope "col"} "Game"]
-     [:th {:scope "col"} "Views"]
+     [:th {:scope "col"} "Peek live views"]
      [:th {:scope "col"} "Language"]
      [:th {:scope "col"} "Timestamp"]
      [:th {:scope "col"} ""]
@@ -30,7 +33,7 @@
         [:td (h (:game influencer))]
         [:td (h (:views influencer))]
         [:td (h (:language influencer))]
-        [:td (h (:timestamp influencer))]
+        [:td (h (.format (java.text.SimpleDateFormat. "dd/MM/yyyy hh:mm") (:timestamp influencer)))]
         [:td [:a {:href (str "/delete/" (h (:id influencer)))} "Remove"]]
         [:td [:a {:href (str "/update/" (h (:id influencer)))} "Edit"]]]) influencers)]])
 
