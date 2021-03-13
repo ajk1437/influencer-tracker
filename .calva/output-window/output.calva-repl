@@ -18,98 +18,161 @@ clj꞉user꞉> 
 ; Evaluating file: db.clj
 #'influencerTracker.db/update-influencer
 clj꞉influencerTracker.db꞉> 
+; Evaluating file: core.clj
+; Evaluating file: view.clj
+#'influencerTracker.core/update-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.view/index-page
+clj꞉influencerTracker.view꞉> 
 ; Evaluating file: layout.clj
 #'influencerTracker.layout/not-found
 clj꞉influencerTracker.layout꞉> 
 ; Evaluating file: view.clj
 #'influencerTracker.view/index-page
 clj꞉influencerTracker.view꞉> 
+; Evaluating file: handler.clj
+#'influencerTracker.handler/app
+clj꞉influencerTracker.handler꞉> 
 ; Evaluating file: core.clj
-; Syntax error reading source at (D:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:34:1).
-; EOF while reading, starting at line 19
-; Evaluation of file core.clj failed: class clojure.lang.Compiler$CompilerException
-
+#'influencerTracker.core/update-influencer
+clj꞉influencerTracker.core꞉> 
+; Evaluating file: db.clj
+#'influencerTracker.db/update-influencer
+clj꞉influencerTracker.db꞉> 
+; Evaluating file: handler.clj
+#'influencerTracker.handler/app
+clj꞉influencerTracker.handler꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
+; No such var: view/add-influencer-form
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.view/add-influencer-form
 clj꞉influencerTracker.view꞉> 
+; Syntax error (IllegalStateException) compiling view/add-influencer-form at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
+; var: #'influencerTracker.view/add-influencer-form is not public
 clj꞉influencerTracker.core꞉> 
 nil
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/is-numeric
+; Syntax error (IllegalStateException) compiling view/add-influencer-form at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
+; var: #'influencerTracker.view/add-influencer-form is not public
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/display-all-influencers
+#'influencerTracker.view/add-influencer-form
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.core/show-create-view
+clj꞉influencerTracker.core꞉> 
+; Syntax error macroexpanding clojure.core/let at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\handler.clj:21:3).
+; (core/show-create-view) - failed: simple-symbol? at: [:bindings :form :local-symbol] spec: :clojure.core.specs.alpha/local-name
+(core/show-create-view) - failed: vector? at: [:bindings :form :seq-destructure] spec: :clojure.core.specs.alpha/seq-binding-form
+(core/show-create-view) - failed: map? at: [:bindings :form :map-destructure] spec: :clojure.core.specs.alpha/map-bindings
+(core/show-create-view) - failed: map? at: [:bindings :form :map-destructure] spec: :clojure.core.specs.alpha/map-special-binding
+clj꞉influencerTracker.handler꞉> 
+#'influencerTracker.handler/routes
+clj꞉influencerTracker.handler꞉> 
+; Syntax error reading source at (REPL:21:35).
+; Invalid token: core/
+clj꞉influencerTracker.handler꞉> 
+nil
+clj꞉influencerTracker.handler꞉> 
+; Syntax error reading source at (REPL:21:35).
+; Invalid token: core/
+clj꞉influencerTracker.handler꞉> 
+#'influencerTracker.handler/routes
+clj꞉influencerTracker.handler꞉> 
+#'influencerTracker.view/add-influencer-form
+clj꞉influencerTracker.view꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:95:5).
+; Unable to resolve symbol: fetch-links! in this context
+clj꞉influencerTracker.view꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:95:5).
+; No such namespace: db
+clj꞉influencerTracker.view꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:43:5).
+; Unable to resolve symbol: influencers in this context
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:46:8).
+; Unable to resolve symbol: images in this context
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:46:8).
+; Unable to resolve symbol: influencer in this context
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/forward
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/back
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/nav-link
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/pager
+clj꞉influencerTracker.core꞉> 
+(db/get-all-influencers influencers 50)
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:105:1).
+; Unable to resolve symbol: influencers in this context
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:28:3).
+; No such namespace: response
 clj꞉influencerTracker.core꞉> 
 #'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/my_routes
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/app
-clj꞉influencerTracker.core꞉> 
-(create-influencer "neCA" "wAR" "11" "srb" )
 #'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-(create-influencer "neCA" "wAR" "11" "srb")
-{:status 302, :headers {"Location" "/"}, :body ""}
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:33:3).
+; No such namespace: response
 clj꞉influencerTracker.core꞉> 
-(create-influencer "neCA" "wAR" 1111 "")
-{:status 302, :headers {"Location" "/"}, :body ""}
+nil
 clj꞉influencerTracker.core꞉> 
-(create-influencer "neCA" "wAR" 1111 "srb")
-{:status 302, :headers {"Location" "/"}, :body ""}
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:21:5).
-; No such var: db/create-movie
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:21:5).
-; No such var: db/create-movie
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/display-all-influencers
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:27:7).
-; Unable to resolve symbol: resource-response in this context
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/wrap-return-favicon
-clj꞉influencerTracker.core꞉> 
-; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
-; Wrong number of args (3) passed to: ring.middleware.defaults/wrap-defaults
-clj꞉influencerTracker.core꞉> 
-; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
-; Wrong number of args (3) passed to: ring.middleware.defaults/wrap-defaults
-clj꞉influencerTracker.core꞉> 
-; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
-; Wrong number of args (3) passed to: influencerTracker.core/wrap-return-favicon
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:28:3).
+; Unable to resolve symbol: responseredirect in this context
 clj꞉influencerTracker.core꞉> 
 #'influencerTracker.core/delete-influencer
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/my_routes
+#'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:34:5).
-; No such namespace: db
+ (when-not (str/blank? "username")
+    (db/create-influencer "username" "game" 11 "language"))
+(1)
 clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
-; No such namespace: view
+(when-not (str/blank? username)
+  (db/create-influencer username game views language)
+(response/redirect "/"))
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:132:11).
+; Unable to resolve symbol: username in this context
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/update-influencer-form
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.core/show-update-view
+(when-not (str/blank? username)
+  (db/create-influencer username game views language))
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:138:11).
+; Unable to resolve symbol: username in this context
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/update-influencer
+(when-not (str/blank? username)
+  (db/create-influencer username game views language))
+(response/redirect "/")
+{:status 302, :headers {"Location" "/"}, :body ""}
 clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:48:59).
-; Unable to resolve symbol: update-movie in this context
+#'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/my_routes
+#'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-(db/get-influencer-by-id 1)
-[{:id 1, :username "summit1g", :game "Grand Theft Auto V", :views 34869, :language "en", :timestamp #inst "2021-03-01T12:48:59.000000000-00:00"}]
+#'influencerTracker.core/create-influencer
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/update-influencer-form
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.db/update-influencer
-clj꞉influencerTracker.db꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:27:4).
+; Unable to resolve symbol: response in this context
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/create-influencer
+clj꞉influencerTracker.core꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\handler.clj:22:110).
+; No such namespace: response
+clj꞉influencerTracker.handler꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\handler.clj:22:110).
+; Unable to resolve symbol: redirect in this context
+clj꞉influencerTracker.handler꞉> 
+nil
+clj꞉influencerTracker.handler꞉> 
+#'influencerTracker.handler/wrap-return-favicon
+clj꞉influencerTracker.handler꞉> 
+#'influencerTracker.handler/routes
+clj꞉influencerTracker.handler꞉> 
 #'influencerTracker.handler/routes
 clj꞉influencerTracker.handler꞉> 
