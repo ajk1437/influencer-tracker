@@ -6,9 +6,11 @@
             [influencerTracker.layout :as layout]
             [ring.util.anti-forgery :as anti-forgery]
             [clj-time.format :as fmt]
-            [clj-time.core :as t]))
+            [clj-time.core :as t]
+            [validateur.validation :refer :all]))
 
  (def custom-formatter (fmt/formatter "yyyy-MM-dd"))
+
 
 (defn display-all-influencers [influencers]
   [:div
@@ -45,7 +47,7 @@
                                        (anti-forgery/anti-forgery-field)
                                        [:div {:class "form-group"}
                                         (form/label "username" "Username")
-                                        (form/text-field {:class "form-control"} "username")]
+                                        ((form/text-field {:class "form-control"} "username"))]
                                        [:div {:class "form-group"}
                                         (form/label "game" "Game")
                                         (form/text-field {:class "form-control"} "game")]
@@ -84,11 +86,6 @@
                                             (form/text-field {:class "form-control"}  "timestamp" (:timestamp influencer))]
                                            (form/submit-button {:class "btn btn-primary btn-block btn-lg"}  "Edit influencer")
                                            [:br])) influencer)]))
-
-
-
-
-
 
 
 (defn index-page [influencers]

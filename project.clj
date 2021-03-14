@@ -11,7 +11,10 @@
                  [ring-json-response "0.2.0"]
                  [ring/ring-jetty-adapter "1.9.1"]
                  [compojure "1.6.2"]
-                 [clj-time "0.15.2"]]
+                 [clj-time "0.15.2"]
+                 [com.novemberain/validateur "2.5.0"]
+                 [clj-http "2.1.0"]
+                 [org.clojure/data.json "0.2.6"]]
 
   :plugins [[lein2-eclipse "2.0.0"]
             [lein-ring "0.12.5"]]

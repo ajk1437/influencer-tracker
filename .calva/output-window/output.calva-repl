@@ -15,204 +15,179 @@
 ;      when the cursor is after the last contents at the prompt
 ;   - Clojure lines in stack traces are peekable and clickable.
 clj꞉user꞉> 
-; Evaluating file: db.clj
-#'influencerTracker.db/update-influencer
-clj꞉influencerTracker.db꞉> 
-; Evaluating file: core.clj
-; Evaluating file: view.clj
-#'influencerTracker.core/update-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/index-page
-clj꞉influencerTracker.view꞉> 
-; Evaluating file: layout.clj
-#'influencerTracker.layout/not-found
-clj꞉influencerTracker.layout꞉> 
-; Evaluating file: view.clj
-#'influencerTracker.view/index-page
-clj꞉influencerTracker.view꞉> 
-; Evaluating file: handler.clj
-#'influencerTracker.handler/app
-clj꞉influencerTracker.handler꞉> 
-; Evaluating file: core.clj
-#'influencerTracker.core/update-influencer
-clj꞉influencerTracker.core꞉> 
-; Evaluating file: db.clj
-#'influencerTracker.db/update-influencer
-clj꞉influencerTracker.db꞉> 
-; Evaluating file: handler.clj
-#'influencerTracker.handler/app
-clj꞉influencerTracker.handler꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
-; No such var: view/add-influencer-form
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/add-influencer-form
-clj꞉influencerTracker.view꞉> 
-; Syntax error (IllegalStateException) compiling view/add-influencer-form at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
-; var: #'influencerTracker.view/add-influencer-form is not public
-clj꞉influencerTracker.core꞉> 
 nil
-clj꞉influencerTracker.core꞉> 
-; Syntax error (IllegalStateException) compiling view/add-influencer-form at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:20:3).
-; var: #'influencerTracker.view/add-influencer-form is not public
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/add-influencer-form
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.core/show-create-view
-clj꞉influencerTracker.core꞉> 
-; Syntax error macroexpanding clojure.core/let at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\handler.clj:21:3).
-; (core/show-create-view) - failed: simple-symbol? at: [:bindings :form :local-symbol] spec: :clojure.core.specs.alpha/local-name
-(core/show-create-view) - failed: vector? at: [:bindings :form :seq-destructure] spec: :clojure.core.specs.alpha/seq-binding-form
-(core/show-create-view) - failed: map? at: [:bindings :form :map-destructure] spec: :clojure.core.specs.alpha/map-bindings
-(core/show-create-view) - failed: map? at: [:bindings :form :map-destructure] spec: :clojure.core.specs.alpha/map-special-binding
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.handler/routes
-clj꞉influencerTracker.handler꞉> 
-; Syntax error reading source at (REPL:21:35).
-; Invalid token: core/
-clj꞉influencerTracker.handler꞉> 
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/oauth2
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/grant-type
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/client-id
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/client-secret
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-token
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/content-type
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/access_token
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/baseURL
+clj꞉influencerTracker.twitchapi꞉> 
+; Syntax error (ClassNotFoundException) compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:24:5).
+; influencerstracker.auth
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-top-games
+clj꞉influencerTracker.twitchapi꞉> 
+(get-top-games)
+{"data" [{"id" "509658", "name" "Just Chatting", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Just%20Chatting-{width}x{height}.jpg"} {"id" "33214", "name" "Fortnite", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-{width}x{height}.jpg"} {"id" "21779", "name" "League of Legends", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends-{width}x{height}.jpg"} {"id" "32399", "name" "Counter-Strike: Global Offensive", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/./Counter-Strike:%20Global%20Offensive-{width}x{height}.jpg"} {"id" "27471", "name" "Minecraft", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Minecraft-{width}x{height}.jpg"} {"id" "511224", "name" "Apex Legends", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Apex%20Legends-{width}x{height}.jpg"} {"id" "32982", "name" "Grand Theft Auto V", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Grand%20Theft%20Auto%20V-{width}x{height}.jpg"} {"id" "512710", "name" "Call of Duty: Warzone", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/./Call%20of%20Duty:%20Warzone-{width}x{height}.jpg"} {"id" "30921", "name" "Rocket League", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Rocket%20League-{width}x{height}.jpg"} {"id" "516575", "name" "VALORANT", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/VALORANT-{width}x{height}.jpg"} {"id" "518203", "name" "Sports", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Sports-{width}x{height}.jpg"} {"id" "18122", "name" "World of Warcraft", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/World%20of%20Warcraft-{width}x{height}.jpg"} {"id" "518204", "name" "FIFA 21", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/FIFA%2021-{width}x{height}.jpg"} {"id" "488552", "name" "Overwatch", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Overwatch-{width}x{height}.jpg"} {"id" "138585", "name" "Hearthstone", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Hearthstone-{width}x{height}.jpg"} {"id" "29595", "name" "Dota 2", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Dota%202-{width}x{height}.jpg"} {"id" "491931", "name" "Escape From Tarkov", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Escape%20From%20Tarkov-{width}x{height}.jpg"} {"id" "26936", "name" "Music", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Music-{width}x{height}.jpg"} {"id" "513143", "name" "Teamfight Tactics", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Teamfight%20Tactics-{width}x{height}.jpg"} {"id" "498566", "name" "Slots", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Slots-{width}x{height}.jpg"}], "pagination" {"cursor" "eyJzIjoyMSwiZCI6ZmFsc2UsInQiOnRydWV9"}}
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-top-game
+clj꞉influencerTracker.twitchapi꞉> 
+(get-top-game)
+{"id" "509658", "name" "Just Chatting", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Just%20Chatting-{width}x{height}.jpg"}
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-game-by-id
+clj꞉influencerTracker.twitchapi꞉> 
+(get-game-by-id 509658)
+{"data" [{"id" "509658", "name" "Just Chatting", "box_art_url" "https://static-cdn.jtvnw.net/ttv-boxart/Just%20Chatting-{width}x{height}.jpg"}]}
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-top-game-name
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-game-by-id
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/search-categories
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/search-channels
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-user
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-top
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-top-id
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-top-name
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-top-gamename
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-top-view
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-streams-top-view
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-stream-viewcount
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-stream-language
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-channel-info
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/get-user
+clj꞉influencerTracker.twitchapi꞉> 
 nil
-clj꞉influencerTracker.handler꞉> 
-; Syntax error reading source at (REPL:21:35).
-; Invalid token: core/
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.handler/routes
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.view/add-influencer-form
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:95:5).
-; Unable to resolve symbol: fetch-links! in this context
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:95:5).
-; No such namespace: db
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:43:5).
-; Unable to resolve symbol: influencers in this context
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:46:8).
-; Unable to resolve symbol: images in this context
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:46:8).
-; Unable to resolve symbol: influencer in this context
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/forward
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/back
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/nav-link
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/pager
-clj꞉influencerTracker.core꞉> 
-(db/get-all-influencers influencers 50)
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/set-interval
+clj꞉influencerTracker.twitchapi꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:130:12).
+; No such var: db/create-influencer
+clj꞉influencerTracker.twitchapi꞉> 
+(get-streams-top-name)
+"ESL_CSGO"
+clj꞉influencerTracker.twitchapi꞉> 
+(get-streams-top-gamename)
+"Counter-Strike: Global Offensive"
+clj꞉influencerTracker.twitchapi꞉> 
+ (get-stream-viewcount)
+81501
+clj꞉influencerTracker.twitchapi꞉> 
+(get-stream-language)
+"en"
+clj꞉influencerTracker.twitchapi꞉> 
+(db/create-influencer
+ {:username (get-streams-top-name)
+  :game (get-streams-top-gamename)
+  :views (get-stream-viewcount)
+  :language (get-stream-language)})
 ; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:105:1).
-; Unable to resolve symbol: influencers in this context
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:28:3).
-; No such namespace: response
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:33:3).
-; No such namespace: response
-clj꞉influencerTracker.core꞉> 
+; No such var: db/create-influencer
+clj꞉influencerTracker.twitchapi꞉> 
 nil
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:28:3).
-; Unable to resolve symbol: responseredirect in this context
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/delete-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
- (when-not (str/blank? "username")
-    (db/create-influencer "username" "game" 11 "language"))
+clj꞉influencerTracker.twitchapi꞉> 
+(db/create-influencer
+ {:username (get-streams-top-name)
+  :game (get-streams-top-gamename)
+  :views (get-stream-viewcount)
+  :language (get-stream-language)})
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:115:1).
+; No such var: db/create-influencer
+clj꞉influencerTracker.twitchapi꞉> 
+(def a (db/create-influencer
+        {:username (get-streams-top-name)
+         :game (get-streams-top-gamename)
+         :views (get-stream-viewcount)
+         :language (get-stream-language)}))
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:123:8).
+; No such var: db/create-influencer
+clj꞉influencerTracker.twitchapi꞉> 
+nil
+clj꞉influencerTracker.db꞉> 
+#'influencerTracker.db/db-connection
+clj꞉influencerTracker.db꞉> 
+; Evaluating file: db.clj
+#'influencerTracker.db/update-influencer
+clj꞉influencerTracker.db꞉> 
+; Evaluating file: twitchapi.clj
+true
+clj꞉influencerTracker.twitchapi꞉> 
+false
+clj꞉influencerTracker.twitchapi꞉> 
+(db/create-influencer
+ {:username (get-streams-top-name)
+  :game (get-streams-top-gamename)
+  :views (get-stream-viewcount)
+  :language (get-stream-language)})
+; Execution error (ArityException) at influencerTracker.twitchapi/eval8955 (form-init7088596186247499449.clj:143).
+; Wrong number of args (1) passed to: influencerTracker.db/create-influencer
+clj꞉influencerTracker.twitchapi꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:130:10).
+; Unable to resolve symbol: set-interval in this context
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.db/set-interval
+clj꞉influencerTracker.db꞉> 
+#'influencerTracker.twitchapi/job
+clj꞉influencerTracker.twitchapi꞉> 
+job
+#object[clojure.core$future_call$reify__8477 0x667f10ac {:status :pending, :val nil}]
+clj꞉influencerTracker.twitchapi꞉> 
+(db/create-influencer
+ {:username (get-streams-top-name)
+  :game (get-streams-top-gamename)
+  :views (get-stream-viewcount)
+  :language (get-stream-language)})
+; Execution error (ArityException) at influencerTracker.twitchapi/eval9024 (form-init7088596186247499449.clj:161).
+; Wrong number of args (1) passed to: influencerTracker.db/create-influencer
+clj꞉influencerTracker.twitchapi꞉> 
+(:username (get-streams-top-name))
+nil
+clj꞉influencerTracker.twitchapi꞉> 
+{:username (get-streams-top-name)
+ :game (get-streams-top-gamename)
+ :views (get-stream-viewcount)
+ :language (get-stream-language)}
+{:username "ESL_CSGO", :game "Counter-Strike: Global Offensive", :views 79037, :language "en"}
+clj꞉influencerTracker.twitchapi꞉> 
+(db/create-influencer
+ (get-streams-top-name)
+ (get-streams-top-gamename)
+ (get-stream-viewcount)
+ (get-stream-language))
 (1)
-clj꞉influencerTracker.core꞉> 
-(when-not (str/blank? username)
-  (db/create-influencer username game views language)
-(response/redirect "/"))
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:132:11).
-; Unable to resolve symbol: username in this context
-clj꞉influencerTracker.core꞉> 
-(when-not (str/blank? username)
-  (db/create-influencer username game views language))
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:138:11).
-; Unable to resolve symbol: username in this context
-clj꞉influencerTracker.core꞉> 
-(when-not (str/blank? username)
-  (db/create-influencer username game views language))
-(response/redirect "/")
-{:status 302, :headers {"Location" "/"}, :body ""}
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\core.clj:27:4).
-; Unable to resolve symbol: response in this context
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/create-influencer
-clj꞉influencerTracker.core꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\handler.clj:22:110).
-; No such namespace: response
-clj꞉influencerTracker.handler꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\handler.clj:22:110).
-; Unable to resolve symbol: redirect in this context
-clj꞉influencerTracker.handler꞉> 
-nil
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.handler/wrap-return-favicon
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.handler/routes
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.handler/routes
-clj꞉influencerTracker.handler꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:1:1).
-; Found lib name 'clj-time.format' containing period with prefix 'quote'.  lib names inside prefix lists must not contain periods
-clj꞉influencerTracker.view꞉> 
-; Execution error (IllegalStateException) at influencerTracker.view/eval17582$loading (form-init434724240662729287.clj:1).
-; Alias f already exists in namespace influencerTracker.view, aliasing formative.core
-clj꞉influencerTracker.view꞉> 
-; Execution error (IllegalStateException) at influencerTracker.view/eval17588$loading (form-init434724240662729287.clj:1).
-; Alias f already exists in namespace influencerTracker.view, aliasing formative.core
-clj꞉influencerTracker.view꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\view.clj:33:17).
-; No such var: format/format
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/custom-formatter
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
-nil
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-all-influencers
-clj꞉influencerTracker.view꞉> 
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/job
+clj꞉influencerTracker.twitchapi꞉> 
+; Evaluating file: twitchapi.clj
+true
+clj꞉influencerTracker.twitchapi꞉> 
+false
+clj꞉influencerTracker.twitchapi꞉> 
+#'influencerTracker.twitchapi/job
+clj꞉influencerTracker.twitchapi꞉> 

@@ -17,6 +17,10 @@
 (defn get-all-influencers []
   (into [] (sql/query db-connection ["select * from influencer"])))
 
+
+(defn get-count-influencers []
+  (into [] (sql/query db-connection ["select COUNT(*) from influencer"])))
+
 (defn get-influencer-by-id [id]
   (into [] (sql/query db-connection ["select * from influencer where id = ?" id])))
 
