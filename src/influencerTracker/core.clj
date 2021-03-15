@@ -41,6 +41,6 @@
   (view/top-streams-page (twitch/get-map-top-stream)))
 
 (defn display-top-game []
-  (view/top-game-page (twitch/get-top-game-name 2) (twitch/get-top-game-box-art-url 2)))
+  (view/top-game-page (twitch/get-map-top-games)))
 
 

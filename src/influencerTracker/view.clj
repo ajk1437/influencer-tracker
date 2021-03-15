@@ -15,9 +15,8 @@
 
 (defn display-all-influencers [influencers]
   [:div
-   [:h1 "All influencers"]
-   [:p "*Here are the most popular influencers of all time on twtich!*"]
-   [:br]
+   [:h1 "Top influencers"]
+   [:p "Here are the most popular influencers with most peek viewers on twtich!"]
    [:table  {:class "table"}
     [:thead {:class "thead-light"}
      [:th {:scope "col"} "#"]
@@ -43,58 +42,57 @@
 ;;
 
 (defn add-influencer-form []
-  (layout/common-layout ""
-                        [:div {:class "form-group"}
-                         [:h1 {:class "text-center"} "Add influencer"]
-                         (form/form-to [:post "/add-influencer"]
-                                       (anti-forgery/anti-forgery-field)
-                                       [:div {:class "form-group"}
-                                        (form/label "username" "Username")
-                                        (form/text-field {:class "form-control"} "username")]
-                                       [:div {:class "form-group"}
-                                        (form/label "game" "Game")
-                                        (form/text-field {:class "form-control"} "game")]
-                                       [:div {:class "form-group"}
-                                        (form/label "views" "Views ")
-                                        (form/text-field {:class "form-control"}  "views")]
-                                       [:div {:class "form-group"}
-                                        (form/label "language" "Language")
-                                        (form/text-field {:class "form-control"}  "language")]
-                                       (form/submit-button {:class "btn btn-primary btn-lg btn-block"}  "Add influencer")
-                                       [:br])]))
+  (layout/common-layout
+   [:div {:class "form-group"}
+    [:h1 {:class "text-center"} "Add influencer"]
+    (form/form-to [:post "/add-influencer"]
+                  (anti-forgery/anti-forgery-field)
+                  [:div {:class "form-group"}
+                   (form/label "username" "Username")
+                   (form/text-field {:class "form-control"} "username")]
+                  [:div {:class "form-group"}
+                   (form/label "game" "Game")
+                   (form/text-field {:class "form-control"} "game")]
+                  [:div {:class "form-group"}
+                   (form/label "views" "Views ")
+                   (form/text-field {:class "form-control"}  "views")]
+                  [:div {:class "form-group"}
+                   (form/label "language" "Language")
+                   (form/text-field {:class "form-control"}  "language")]
+                  (form/submit-button {:class "btn btn-primary btn-lg btn-block"}  "Add influencer")
+                  [:br])]))
 
 (defn update-influencer-form [influencer]
-  (layout/common-layout ""
-                        [:div {:class "form-group"}
-                         [:h1 {:class "text-center"} "Edit influencer"]
-                         (map
-                          (fn [influencer]
-                            (form/form-to [:post "/update-influencer"]
-                                          (anti-forgery/anti-forgery-field)
-                                          (form/hidden-field "id" (:id influencer))
-                                          [:div {:class "form-group"}
-                                           (form/label "username" "Username")
-                                           (form/text-field {:class "form-control"} "username" (:username influencer))]
-                                          [:div {:class "form-group"}
-                                           (form/label "game" "Game")
-                                           (form/text-field {:class "form-control"} "game" (:game influencer))]
-                                          [:div {:class "form-group"}
-                                           (form/label "views" "Views ")
-                                           (form/text-field {:class "form-control"}  "views" (:views influencer))]
-                                          [:div {:class "form-group"}
-                                           (form/label "language" "Language")
-                                           (form/text-field {:class "form-control"}  "language" (:language influencer))]
-                                          [:div {:class "form-group"}
-                                           (form/label "timestamp" "Timestamp")
-                                           (form/text-field {:class "form-control"}  "timestamp" (:timestamp influencer))]
-                                          (form/submit-button {:class "btn btn-primary btn-block btn-lg"}  "Edit influencer")
-                                          [:br])) influencer)]))
+  (layout/common-layout
+   [:div {:class "form-group"}
+    [:h1 {:class "text-center"} "Edit influencer"]
+    (map
+     (fn [influencer]
+       (form/form-to [:post "/update-influencer"]
+                     (anti-forgery/anti-forgery-field)
+                     (form/hidden-field "id" (:id influencer))
+                     [:div {:class "form-group"}
+                      (form/label "username" "Username")
+                      (form/text-field {:class "form-control"} "username" (:username influencer))]
+                     [:div {:class "form-group"}
+                      (form/label "game" "Game")
+                      (form/text-field {:class "form-control"} "game" (:game influencer))]
+                     [:div {:class "form-group"}
+                      (form/label "views" "Views ")
+                      (form/text-field {:class "form-control"}  "views" (:views influencer))]
+                     [:div {:class "form-group"}
+                      (form/label "language" "Language")
+                      (form/text-field {:class "form-control"}  "language" (:language influencer))]
+                     [:div {:class "form-group"}
+                      (form/label "timestamp" "Timestamp")
+                      (form/text-field {:class "form-control"}  "timestamp" (:timestamp influencer))]
+                     (form/submit-button {:class "btn btn-primary btn-block btn-lg"}  "Edit influencer")
+                     [:br])) influencer)]))
 
 (defn display-top-streams [stream]
   [:div
-   [:h1 "All streams"]
-   [:p "*Most popular stream at this moment on twitch! !*"]
-   [:br]
+   [:h1 "Top streams"]
+   [:p "10 Most popular stream at this moment on twitch!"]
    [:table  {:class "table"}
     [:thead {:class "thead-light"}
      [:th {:scope "col"} "#Twitch user id"]
@@ -113,21 +111,31 @@
         [:td (h (:viewer_count stream))]
         [:td (:language stream)]]) stream)]])
 
-(defn display-top-game [gamename gameart]
-  [:div {:class "card" :style "width: 10rem;"}
-   [:img {:class "card-img-top" :src gameart :alt "Top game"}]
-   [:div {:class "card-body"}
-    [:h5 {:class "card-title"} gamename]]])
+(defn display-top-game [games]
+  [:div
+   [:h1 "Top games"]
+   [:p "10 Most popular games at this moment on twitch!"]
+   [:table  {:class "table"}
+    [:thead {:class "thead-light"}
+     [:th {:scope "col"} "#"]
+     [:th {:scope "col"} "Game name"]
+     [:th {:scope "col"} "Art"]]
+      (map
+       (fn [games]
+         [:tr
+          [:td ]
+          [:td (h (:name games))]
+          [:td [:img {:src (:art games)}]]]) games)]])
 
-(defn top-game-page [gamename gameart]
-  (layout/common-layout ""
-                        (display-top-game gamename gameart)))
+(defn top-game-page [games]
+  (layout/common-layout
+   (display-top-game games)))
 
 (defn top-streams-page [stream]
-  (layout/common-layout ""
-                        (display-top-streams stream)))
+  (layout/common-layout
+   (display-top-streams stream)))
 
 (defn index-page [influencers]
-  (layout/common-layout ""
-                        (display-all-influencers influencers)))
+  (layout/common-layout
+   (display-all-influencers influencers)))
 

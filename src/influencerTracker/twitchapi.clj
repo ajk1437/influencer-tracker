@@ -51,8 +51,13 @@
   "Return top games image width:100 height:100"
   (clojure.string/replace (get-in (get-top-games) ["data" rank "box_art_url"]) "{width}x{height}" "150x150"))
 
-(defn get-map-top-game []
-  (let [x get-top-games]))
+(defn get-map-top-games []
+  (let [x (get-top-games)]
+    (for [y (range 0 9)]
+      (hash-map
+       :game_id (get-in x ["data" y "id"])
+       :name (get-in x ["data" y "name"])
+       :art (clojure.string/replace (get-in x ["data" y "box_art_url"]) "{width}x{height}" "150x150")))))
 
 ;;CATEGORIES
 ;;
@@ -153,7 +158,6 @@
 
 ;; fix for Incorrect string value: '\xED\x92\x8D\xEC\x9B\x94
 ;; ALTER TABLE influencer MODIFY username CHAR (50) CHARACTER SET utf8mb4;
-
 
 ;; cancel background job
 (future-cancel job)
