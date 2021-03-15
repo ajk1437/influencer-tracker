@@ -1,8 +1,8 @@
 (ns influencerTracker.twitchapi
-   (:require [clojure.data.json :as json]
-             [clj-http.client :as http]
-             [clojure.string :as s]
-             [influencerTracker.db :as db]))
+  (:require [clojure.data.json :as json]
+            [clj-http.client :as http]
+            [clojure.string :as s]
+            [influencerTracker.db :as db]))
 
 (def baseURL "https://api.twitch.tv/helix/")
 (def oauth2 "https://id.twitch.tv/oauth2/token?")
@@ -18,6 +18,7 @@
   (get (json/read-str (:body (http/post get-token))) "access_token"))
 
 
+;; GAMES
 (defn get-top-games []
   "Return top 10 games with most viewers"
   (json/read-str
@@ -29,9 +30,11 @@
                 :content-type content-type}}))))
 
 (defn get-top-game []
+  "Return top games with most viewers"
   (get-in (get-top-games) ["data" 0]))
 
 (defn get-game-by-id [id]
+  "Return games with id"
   (json/read-str
    (:body
     (http/get (str baseURL "games?id=" id)
@@ -40,9 +43,19 @@
                 :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
 
-(defn get-top-game-name []
-  (get-in (get-top-games) ["data" 0 "name"]))
+(defn get-top-game-name [rank]
+  "Return top games name"
+  (get-in (get-top-games) ["data" rank "name"]))
 
+(defn get-top-game-box-art-url [rank]
+  "Return top games image width:100 height:100"
+  (clojure.string/replace (get-in (get-top-games) ["data" rank "box_art_url"]) "{width}x{height}" "150x150"))
+
+(defn get-map-top-game []
+  (let [x get-top-games]))
+
+;;CATEGORIES
+;;
 (defn search-categories [category]
   (json/read-str
    (:body
@@ -57,8 +70,8 @@
    (:body
     (http/get (str baseURL "search/channels?query=" channel "&live_only=" live)
               {:headers
-               :Authorization (str "Bearer " access_token)
-               {:client-id client-id
+               {:Authorization (str "Bearer " access_token)
+                :client-id client-id
                 :content-type content-type}}))))
 
 (defn get-streams [game_id]
@@ -69,6 +82,7 @@
                {:client-id client-id
                 :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
+
 (defn get-streams-user [name]
   (json/read-str
    (:body
@@ -78,6 +92,8 @@
                 :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
 
+
+;; STREAMS
 (defn get-streams-top []
   (json/read-str
    (:body
@@ -87,21 +103,19 @@
                 :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
 
-(defn get-streams-top-id []
-  (get-in (get-streams-top) ["data" 0 "user_id"]))
+(defn get-map-top-stream []
+  (let [x (get-streams-top)]
+    (for [y (range 0 9)]
+      (hash-map
+       :user_id (get-in x ["data" y "user_id"])
+       :username (get-in x ["data" y "user_name"])
+       :title (get-in x ["data" y "title"])
+       :thumbnail_url (clojure.string/replace (get-in x ["data" y "thumbnail_url"]) "{width}x{height}" "150x150")
+       :game_name (get-in x ["data" y "game_name"])
+       :viewer_count (get-in x ["data" y "viewer_count"])
+       :language (get-in x ["data" y "language"])))))
 
-(defn get-streams-top-name []
-  (get-in (get-streams-top) ["data" 0 "user_name"]))
-
-(defn get-streams-top-gamename []
-  (get-in (get-streams-top) ["data" 0 "game_name"]))
-
-(defn get-stream-viewcount []
-  (get-in (get-streams-user (get-streams-top-id)) ["data" 0 "viewer_count"]))
-
-(defn get-stream-language []
-  (get-in (get-streams-user (get-streams-top-id)) ["data" 0 "language"]))
-
+;;CHANNELS
 
 (defn get-channel-info [id]
   (json/read-str
@@ -109,7 +123,7 @@
     (http/get (str baseURL "channels?broadcaster_id=" id)
               {:headers
                {:client-id client-id
-                :Authorization (str "Bearer "access_token)
+                :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
 
 (defn get-user [user_id]
@@ -128,11 +142,18 @@
 ;; start work in background every 15min (900000 miliseconds) collect data 
 ;; [:username :game :views :language]
 (def job (set-interval
-          #(db/create-influencer
-            (get-streams-top-name)
-            (get-streams-top-gamename)
-            (get-stream-viewcount) 
-            (get-stream-language)) 900000))
+          #(let [streams (get-map-top-stream)]
+            (map
+            (fn [streams]
+              (db/create-influencer
+               (:username streams)
+               (:game_name streams)
+               (:viewer_count streams)
+               (:language streams))) streams)) 900000))
+
+;; fix for Incorrect string value: '\xED\x92\x8D\xEC\x9B\x94
+;; ALTER TABLE influencer MODIFY username CHAR (50) CHARACTER SET utf8mb4;
+
 
 ;; cancel background job
 (future-cancel job)

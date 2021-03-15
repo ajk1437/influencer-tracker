@@ -5,8 +5,10 @@
 
 (defn- navbar []
   [:nav {:class "navbar navbar-dark bg-dark"}
-   [:a {:class "navbar-brand" :href "/"} 
+   [:a {:class "navbar-brand" :href "/"}
     [:img {:src "/logo.png" :style "width: 35px;"} " Twitch influencers!"]]
+   [:a {:class "navbar-brand" :href "/top-streams"} "Top streams"]
+   [:a {:class "navbar-brand" :href "/top-game"} "Top game"]
    [:a {:class "navbar-brand" :href "/add-influencer"} "Add influencer"]])
 
 (defn common-layout [header & body]

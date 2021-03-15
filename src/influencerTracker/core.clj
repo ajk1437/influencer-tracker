@@ -6,10 +6,14 @@
              [ring.middleware.resource :refer [wrap-resource]]
              [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
              [influencerTracker.db :as db]
-             [influencerTracker.view :as view]))
+             [influencerTracker.view :as view]
+             [influencerTracker.twitchapi :as twitch]
+             [clojure.data.json :as json]
+             [cheshire.core :refer :all]))
 
 (defn is-numeric [x]
   {:pre [(number? x)]})
+
 
 (defn display-all-influencers []
   (view/index-page (sort-by :views #(> %1 %2) (db/get-all-influencers))))
@@ -32,4 +36,11 @@
   (when-not (str/blank? id)
     (db/update-influencer id username game views language timestamp))
   (view/index-page (db/get-all-influencers)))
+
+(defn display-top-streams []
+  (view/top-streams-page (twitch/get-map-top-stream)))
+
+(defn display-top-game []
+  (view/top-game-page (twitch/get-top-game-name 2) (twitch/get-top-game-box-art-url 2)))
+
 

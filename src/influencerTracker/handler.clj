@@ -23,6 +23,8 @@
   (GET "/delete/:id" [id] (core/delete-influencer id) (redirect "/"))
   (GET "/update/:id" [id] (core/show-update-view id))
   (POST "/update-influencer"  [id username game views language timestamp] (core/update-influencer id username game views language timestamp) (redirect "/"))
+  (GET "/top-streams" [] (core/display-top-streams))
+    (GET "/top-game" [] (core/display-top-game))
   (route/not-found "Not Found")
   (route/resources "/"))
 
