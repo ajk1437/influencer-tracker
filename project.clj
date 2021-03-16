@@ -15,7 +15,8 @@
                  [com.novemberain/validateur "2.5.0"]
                  [clj-http "2.1.0"]
                  [org.clojure/data.json "1.1.0"]
-                 [cheshire "5.10.0"]]
+                 [com.hypirion/clj-xchart "0.2.0"]
+                 [clojure.java-time "0.3.2"]]
 
   :plugins [[lein2-eclipse "2.0.0"]
             [lein-ring "0.12.5"]]

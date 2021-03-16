@@ -9,11 +9,47 @@
              [influencerTracker.view :as view]
              [influencerTracker.twitchapi :as twitch]
              [clojure.data.json :as json]
-             [cheshire.core :refer :all]))
+             [cheshire.core :refer :all]
+             [com.hypirion.clj-xchart :as chart]
+             [clj-time.format :as f]
+             [clj-time.core :as time]
+             [clj-time.coerce :as tc]))
 
 (defn is-numeric [x]
   {:pre [(number? x)]})
 
+(defn get-percentage [p total]
+  (/ (* p 100.0) total))
+
+(defn distinct-games [influencers]
+  (frequencies (map :game influencers)))
+
+(defn distinct-username [influencers]
+  (frequencies (map :username influencers)))
+
+(defn chart-game [influencers]
+  (sort-by :percentage #(> %1 %2)
+           (map
+            (fn [game]
+              (hash-map
+               :game (first game)
+               :percentage (get-percentage (second game) (count influencers))))
+            (distinct-games influencers))))
+
+(defn top-streams-of-the-week [influencers]
+   (filter
+    #(>
+      (f/unparse (f/formatter "yyyyMMdd") (:timestamp %))
+      (f/unparse (f/formatter "yyyyMMdd")  (time/minus (time/now) (time/days 7)))
+      influencers)))
+
+(chart/view
+ (chart/pie-chart
+  (distinct-username (db/get-all-influencers))
+  {:title (str "Which ClojureScript optimization "
+               "settings do you use?")
+   :render-style :donut
+   :annotation-distance 0.82}))
 
 (defn display-all-influencers []
   (view/index-page (sort-by :views #(> %1 %2) (db/get-all-influencers))))
@@ -42,5 +78,8 @@
 
 (defn display-top-game []
   (view/top-game-page (twitch/get-map-top-games)))
+
+(defn display-statistics []
+  (view/statistic-page (chart-game (db/get-all-influencers))))
 
 

@@ -10,8 +10,7 @@
             [validateur.validation :refer :all]
             [influencerTracker.twitchapi :as twitchapi]))
 
- (def custom-formatter (fmt/formatter "yyyy-MM-dd"))
-
+(def custom-formatter (fmt/formatter "yyyy-MM-dd"))
 
 (defn display-all-influencers [influencers]
   [:div
@@ -25,8 +24,8 @@
      [:th {:scope "col"} "Peek live views"]
      [:th {:scope "col"} "Language"]
      [:th {:scope "col"} "Timestamp"]
-     [:th {:scope "col"} ""]
-     [:th {:scope "col"} ""]]
+     [:th {:scope "col"} "Remove"]
+     [:th {:scope "col"} "Edit"]]
     (map
      (fn [influencer]
        [:tr
@@ -36,8 +35,8 @@
         [:td (h (:views influencer))]
         [:td (h (:language influencer))]
         [:td (h (.format (java.text.SimpleDateFormat. "dd/MM/yyyy hh:mm") (:timestamp influencer)))]
-        [:td [:a {:href (str "/delete/" (h (:id influencer)))} "Remove"]]
-        [:td [:a {:href (str "/update/" (h (:id influencer)))} "Edit"]]]) influencers)]])
+        [:td [:a {:class "btn btn-primary btn-danger" :href (str "/delete/" (h (:id influencer)))} "Remove"]]
+        [:td [:a {:class "btn btn-primary btn-info" :href (str "/update/" (h (:id influencer)))} "Edit"]]]) influencers)]])
 
 ;;
 
@@ -91,7 +90,7 @@
 
 (defn display-top-streams [stream]
   [:div
-   [:h1 "Top streams"]
+   [:h1 "Top live channels"]
    [:p "10 Most popular stream at this moment on twitch!"]
    [:table  {:class "table"}
     [:thead {:class "thead-light"}
@@ -120,12 +119,33 @@
      [:th {:scope "col"} "#"]
      [:th {:scope "col"} "Game name"]
      [:th {:scope "col"} "Art"]]
-      (map
-       (fn [games]
-         [:tr
-          [:td ]
-          [:td (h (:name games))]
-          [:td [:img {:src (:art games)}]]]) games)]])
+    (map
+     (fn [games]
+       [:tr
+        [:td]
+        [:td (h (:name games))]
+        [:td [:img {:src (:art games)}]]]) games)]])
+
+(defn display-statistics [games]
+   [:div
+    [:h1 "Statitcs about games"]
+    [:p "Most popular games by % of how much Influencer plays"]
+    [:table  {:class "table"}
+     [:thead {:class "thead-light"}
+      [:th {:scope "col"} "#"]
+      [:th {:scope "col"} "Game name"]
+      [:th {:scope "col"} "Percentage %"]]
+     (map
+      (fn [games]
+        [:tr
+         [:td]
+         [:td (h (:game games))]
+         [:td (h (format "%.2f" (:percentage games))) "%"]]) games)]])
+
+(defn statistic-page [games]
+  (layout/common-layout
+   (display-statistics games)))
+
 
 (defn top-game-page [games]
   (layout/common-layout
