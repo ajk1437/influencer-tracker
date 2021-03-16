@@ -79,3 +79,49 @@ clj꞉influencerTracker.core꞉> 
 (f/unparse (f/formatter "yyyyMMdd")  (time/minus (time/now) (time/days 7)))
 "20210309"
 clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/average
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/avrage-viewers
+clj꞉influencerTracker.core꞉> 
+(average (reduce + :views (db/get-all-influencers)))
+7250402/59
+clj꞉influencerTracker.core꞉> 
+(reduce + (map :views (db/get-all-influencers)))
+7250402
+clj꞉influencerTracker.core꞉> 
+(map :views (db/get-all-influencers))
+(34869 29005 88130 3700000 33333 98671 18169 79037 96627 32037 67539 71511 53438 65617 68023 79027 76905 39031 30458 19174 31125 19174 31125 31125 19174 17444 17436 31125 18887 18291 17436 16622 15666 14934 14022 38373 59958 72329 75788 73230 76560 88289 85262 87291 82459 94159 95040 105442 94951 106330 100691 102491 96574 90070 89833 97093 92944 121844 129214)
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/avrage-viewers
+clj꞉influencerTracker.core꞉> 
+(avrage-viewers (db/get-all-influencers))
+7250402/59
+clj꞉influencerTracker.core꞉> 
+(count (db/get-all-influencers))
+59
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/average
+clj꞉influencerTracker.core꞉> 
+(avrage-viewers (db/get-all-influencers))
+122888.1694915254
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/avrage-viewers
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.view/display-top-game
+clj꞉influencerTracker.view꞉> 
+#'influencerTracker.core/average
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.core/avrage-viewers
+clj꞉influencerTracker.core꞉> 
+(avrage-viewers)
+122888.0
+clj꞉influencerTracker.core꞉> 
+#'influencerTracker.layout/common-layout
+clj꞉influencerTracker.layout꞉> 
+#'influencerTracker.layout/common-layout
+clj꞉influencerTracker.layout꞉> 
+#'influencerTracker.view/display-statistics
+clj꞉influencerTracker.view꞉> 
+(Math/floor (influencerTracker.core/avrage-viewers))
+122888.0
+clj꞉influencerTracker.view꞉> 

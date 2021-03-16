@@ -43,6 +43,13 @@
       (f/unparse (f/formatter "yyyyMMdd")  (time/minus (time/now) (time/days 7)))
       influencers)))
 
+(defn average [coll]
+  (int
+   (quot (reduce + coll) (count coll))))
+
+(defn avrage-viewers []
+  (average (map :views (db/get-all-influencers))))
+
 (chart/view
  (chart/pie-chart
   (distinct-username (db/get-all-influencers))

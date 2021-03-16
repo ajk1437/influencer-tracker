@@ -130,6 +130,7 @@
    [:div
     [:h1 "Statitcs about games"]
     [:p "Most popular games by % of how much Influencer plays"]
+    [:p "Average viewers per inluencer: " (influencerTracker.core/avrage-viewers)]
     [:table  {:class "table"}
      [:thead {:class "thead-light"}
       [:th {:scope "col"} "#"]
@@ -145,7 +146,6 @@
 (defn statistic-page [games]
   (layout/common-layout
    (display-statistics games)))
-
 
 (defn top-game-page [games]
   (layout/common-layout
