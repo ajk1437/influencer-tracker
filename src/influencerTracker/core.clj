@@ -27,13 +27,20 @@
 (defn distinct-username [influencers]
   (frequencies (map :username influencers)))
 
+(defn distinct-language [influencers]
+  (frequencies (map :language influencers)))
+
+;;(get (twitchapi/get-game-summary (:game games)) "channels")
 (defn chart-game [influencers]
   (sort-by :percentage #(> %1 %2)
            (map
             (fn [game]
-              (hash-map
-               :game (first game)
-               :percentage (get-percentage (second game) (count influencers))))
+              (let [game-summary (twitch/get-game-summary (first game))]
+                (hash-map
+                 :game (first game)
+                 :percentage (get-percentage (second game) (count influencers))
+                 :channels (get game-summary "channels")
+                 :viewers (get game-summary "viewers"))))
             (distinct-games influencers))))
 
 (defn top-streams-of-the-week [influencers]
@@ -50,13 +57,20 @@
 (defn avrage-viewers []
   (average (map :views (db/get-all-influencers))))
 
-(chart/view
- (chart/pie-chart
-  (distinct-username (db/get-all-influencers))
-  {:title (str "Which ClojureScript optimization "
-               "settings do you use?")
-   :render-style :donut
-   :annotation-distance 0.82}))
+(defn most-watched-language []
+  (key
+   (apply max-key val (distinct-language (db/get-all-influencers)))))
+
+;; (chart/view
+;;  (chart/pie-chart
+;;   (distinct-username (db/get-all-influencers))
+;;   {:title (str "Which ClojureScript optimization "
+;;                "settings do you use?")
+;;    :render-style :donut
+;;    :annotation-distance 0.82}))
+
+(defn games-being-streamed-now []
+  (get (twitch/get-total-games) "_total"))
 
 (defn display-all-influencers []
   (view/index-page (sort-by :views #(> %1 %2) (db/get-all-influencers))))
@@ -87,6 +101,6 @@
   (view/top-game-page (twitch/get-map-top-games)))
 
 (defn display-statistics []
-  (view/statistic-page (chart-game (db/get-all-influencers))))
+  (view/statistic-page (chart-game (db/get-all-influencers)) (avrage-viewers) (most-watched-language) (games-being-streamed-now)))
 
 

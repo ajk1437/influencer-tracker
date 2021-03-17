@@ -15,113 +15,43 @@
 ;      when the cursor is after the last contents at the prompt
 ;   - Clojure lines in stack traces are peekable and clickable.
 clj꞉user꞉> 
+WARN clojure.tools.logging not found on classpath, compojure.api logging to console.
+; Syntax error (ClassNotFoundException) compiling new at (jsonista\core.clj:79:38).
+; com.fasterxml.jackson.core.exc.InputCoercionException
+clj꞉influencerTracker.twitchapi꞉> 
+; Syntax error compiling at (muuntaja\format\json.clj:1:1).
+; namespace 'jsonista.core' not found
+clj꞉influencerTracker.twitchapi꞉> 
+nil
+clj꞉influencerTracker.twitchapi꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:77:10).
+; Unable to resolve symbol: client-id in this context
+clj꞉influencerTracker.twitchapi꞉> 
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:77:5).
+; Unable to resolve symbol: client-id in this context
+clj꞉influencerTracker.twitchapi꞉> 
 ; Evaluating file: db.clj
 #'influencerTracker.db/update-influencer
 clj꞉influencerTracker.db꞉> 
 ; Evaluating file: twitchapi.clj
 true
 clj꞉influencerTracker.twitchapi꞉> 
-nil
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/top-streams-of-the-week
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/top-streams-of-the-week
-clj꞉influencerTracker.core꞉> 
-(top-streams-of-the-week (db/get-all-influencers))
-#object[clojure.core$filter$fn__5907 0x113d802e "clojure.core$filter$fn__5907@113d802e"]
-clj꞉influencerTracker.core꞉> 
-(f/unparse (f/formatter "yyyyMMdd") (t/minus (t/local-date) (t/days 7)))
-; Execution error (ClassCastException) at clj-time.format/unparse (format.clj:200).
-; class java.time.LocalDate cannot be cast to class org.joda.time.ReadableInstant (java.time.LocalDate is in module java.base of loader 'bootstrap'; org.joda.time.ReadableInstant is in unnamed module of loader 'app')
-clj꞉influencerTracker.core꞉> 
-(t/minus (t/local-date) (t/days 7))
-#object[java.time.LocalDate 0xc0ed620 "2021-03-09"]
-clj꞉influencerTracker.core꞉> 
- (time/plus (time/now) (time/days 3))
-#clj-time/date-time "2021-03-19T18:32:57.746Z"
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/top-streams-of-the-week
-clj꞉influencerTracker.core꞉> 
-(top-streams-of-the-week (db/get-all-influencers))
-#object[clojure.core$filter$fn__5907 0x2e0f182c "clojure.core$filter$fn__5907@2e0f182c"]
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/top-streams-of-the-week
-clj꞉influencerTracker.core꞉> 
- (f/unparse (f/formatter "yyyyMMdd")  (time/minus (time/now) (time/days 7)))
-"20210309"
-clj꞉influencerTracker.core꞉> 
-(top-streams-of-the-week (db/get-all-influencers))
-#object[clojure.core$filter$fn__5907 0x21e65315 "clojure.core$filter$fn__5907@21e65315"]
-clj꞉influencerTracker.core꞉> 
-(filter even? [range 10])
-; Error printing return value (IllegalArgumentException) at clojure.core/even? (core.clj:1393).
-; Argument must be an integer: clojure.core$range@786940ca
-clj꞉influencerTracker.core꞉> 
-(filter even? (range 10))
-(0 2 4 6 8)
-clj꞉influencerTracker.core꞉> 
-(:timestamp (db/get-all-influencers))
-nil
-clj꞉influencerTracker.core꞉> 
-(map :timestamp (db/get-all-influencers))
-(#inst "2021-03-01T12:48:59.000000000-00:00" #inst "2021-05-01T14:04:18.000000000-00:00" #inst "2020-03-01T16:04:27.000000000-00:00" #inst "2021-03-13T12:05:01.000000000-00:00" #inst "2021-03-13T12:59:13.000000000-00:00" #inst "2021-03-14T15:44:57.000000000-00:00" #inst "2021-03-15T14:05:13.000000000-00:00" #inst "2021-03-14T15:14:31.000000000-00:00" #inst "2021-03-14T15:59:41.000000000-00:00" #inst "2021-03-15T13:55:16.000000000-00:00" #inst "2021-03-15T11:55:02.000000000-00:00" #inst "2021-03-15T12:10:04.000000000-00:00" #inst "2021-03-15T12:25:05.000000000-00:00" #inst "2021-03-15T12:40:07.000000000-00:00" #inst "2021-03-15T12:55:09.000000000-00:00" #inst "2021-03-15T13:10:10.000000000-00:00" #inst "2021-03-15T13:25:12.000000000-00:00" #inst "2021-03-15T13:40:14.000000000-00:00" #inst "2021-03-15T14:06:18.000000000-00:00" #inst "2021-03-15T14:06:18.000000000-00:00" #inst "2021-03-15T14:07:58.000000000-00:00" #inst "2021-03-15T14:07:58.000000000-00:00" #inst "2021-03-15T14:10:17.000000000-00:00" #inst "2021-03-15T14:11:20.000000000-00:00" #inst "2021-03-15T14:11:20.000000000-00:00" #inst "2021-03-15T14:11:20.000000000-00:00" #inst "2021-03-15T14:11:20.000000000-00:00" #inst "2021-03-15T14:13:47.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:13:48.000000000-00:00" #inst "2021-03-15T14:25:19.000000000-00:00" #inst "2021-03-15T14:40:21.000000000-00:00" #inst "2021-03-15T14:55:22.000000000-00:00" #inst "2021-03-15T15:10:24.000000000-00:00" #inst "2021-03-15T15:25:26.000000000-00:00" #inst "2021-03-15T15:40:27.000000000-00:00" #inst "2021-03-15T15:55:29.000000000-00:00" #inst "2021-03-15T16:10:31.000000000-00:00" #inst "2021-03-15T16:25:32.000000000-00:00" #inst "2021-03-15T16:40:34.000000000-00:00" #inst "2021-03-15T16:55:36.000000000-00:00" #inst "2021-03-15T17:10:38.000000000-00:00" #inst "2021-03-15T17:25:39.000000000-00:00" #inst "2021-03-15T17:40:41.000000000-00:00" #inst "2021-03-15T17:55:43.000000000-00:00" #inst "2021-03-15T18:10:45.000000000-00:00" #inst "2021-03-15T18:25:46.000000000-00:00" #inst "2021-03-15T18:40:48.000000000-00:00" #inst "2021-03-15T18:55:50.000000000-00:00" #inst "2021-03-15T19:10:51.000000000-00:00" #inst "2021-03-15T19:25:53.000000000-00:00" #inst "2021-03-15T19:40:55.000000000-00:00" #inst "2021-03-15T19:55:57.000000000-00:00" #inst "2021-03-15T20:10:58.000000000-00:00")
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/top-streams-of-the-week
-clj꞉influencerTracker.core꞉> 
-(top-streams-of-the-week (db/get-all-influencers))
-(#object[clojure.core$filter$fn__5907$fn__5908 0x324b3d05 "clojure.core$filter$fn__5907$fn__5908@324b3d05"] #object[clojure.core$filter$fn__5907$fn__5908 0x1c19f5f4 "clojure.core$filter$fn__5907$fn__5908@1c19f5f4"] #object[clojure.core$filter$fn__5907$fn__5908 0x54eb3f07 "clojure.core$filter$fn__5907$fn__5908@54eb3f07"] #object[clojure.core$filter$fn__5907$fn__5908 0x7bf8145 "clojure.core$filter$fn__5907$fn__5908@7bf8145"] #object[clojure.core$filter$fn__5907$fn__5908 0x6c7737a2 "clojure.core$filter$fn__5907$fn__5908@6c7737a2"] #object[clojure.core$filter$fn__5907$fn__5908 0x3f92d98d "clojure.core$filter$fn__5907$fn__5908@3f92d98d"] #object[clojure.core$filter$fn__5907$fn__5908 0x328cca7f "clojure.core$filter$fn__5907$fn__5908@328cca7f"] #object[clojure.core$filter$fn__5907$fn__5908 0x49c2d0c2 "clojure.core$filter$fn__5907$fn__5908@49c2d0c2"] #object[clojure.core$filter$fn__5907$fn__5908 0x1cdd247f "clojure.core$filter$fn__5907$fn__5908@1cdd247f"] #object[clojure.core$filter$fn__5907$fn__5908 0x352ac8d8 "clojure.core$filter$fn__5907$fn__5908@352ac8d8"] #object[clojure.core$filter$fn__5907$fn__5908 0x61a13330 "clojure.core$filter$fn__5907$fn__5908@61a13330"] #object[clojure.core$filter$fn__5907$fn__5908 0x3e3aab06 "clojure.core$filter$fn__5907$fn__5908@3e3aab06"] #object[clojure.core$filter$fn__5907$fn__5908 0x4b318e62 "clojure.core$filter$fn__5907$fn__5908@4b318e62"] #object[clojure.core$filter$fn__5907$fn__5908 0x28bef3d4 "clojure.core$filter$fn__5907$fn__5908@28bef3d4"] #object[clojure.core$filter$fn__5907$fn__5908 0x406e7d40 "clojure.core$filter$fn__5907$fn__5908@406e7d40"] #object[clojure.core$filter$fn__5907$fn__5908 0x2be79cd0 "clojure.core$filter$fn__5907$fn__5908@2be79cd0"] #object[clojure.core$filter$fn__5907$fn__5908 0x6ce24550 "clojure.core$filter$fn__5907$fn__5908@6ce24550"] #object[clojure.core$filter$fn__5907$fn__5908 0x331d3b4b "clojure.core$filter$fn__5907$fn__5908@331d3b4b"] #object[clojure.core$filter$fn__5907$fn__5908 0x2ad415 "clojure.core$filter$fn__5907$fn__5908@2ad415"] #object[clojure.core$filter$fn__5907$fn__5908 0x173cc9dc "clojure.core$filter$fn__5907$fn__5908@173cc9dc"] #object[clojure.core$filter$fn__5907$fn__5908 0x698ac6ae "clojure.core$filter$fn__5907$fn__5908@698ac6ae"] #object[clojure.core$filter$fn__5907$fn__5908 0x33176fb7 "clojure.core$filter$fn__5907$fn__5908@33176fb7"] #object[clojure.core$filter$fn__5907$fn__5908 0x65cb9fbc "clojure.core$filter$fn__5907$fn__5908@65cb9fbc"] #object[clojure.core$filter$fn__5907$fn__5908 0x1448c8f0 "clojure.core$filter$fn__5907$fn__5908@1448c8f0"] #object[clojure.core$filter$fn__5907$fn__5908 0x2bc8d361 "clojure.core$filter$fn__5907$fn__5908@2bc8d361"] #object[clojure.core$filter$fn__5907$fn__5908 0x232a7b78 "clojure.core$filter$fn__5907$fn__5908@232a7b78"] #object[clojure.core$filter$fn__5907$fn__5908 0x1a2536de "clojure.core$filter$fn__5907$fn__5908@1a2536de"] #object[clojure.core$filter$fn__5907$fn__5908 0x48f87222 "clojure.core$filter$fn__5907$fn__5908@48f87222"] #object[clojure.core$filter$fn__5907$fn__5908 0x2546e387 "clojure.core$filter$fn__5907$fn__5908@2546e387"] #object[clojure.core$filter$fn__5907$fn__5908 0x55c7adec "clojure.core$filter$fn__5907$fn__5908@55c7adec"] #object[clojure.core$filter$fn__5907$fn__5908 0x6667f24c "clojure.core$filter$fn__5907$fn__5908@6667f24c"] #object[clojure.core$filter$fn__5907$fn__5908 0x6d05f5c0 "clojure.core$filter$fn__5907$fn__5908@6d05f5c0"] #object[clojure.core$filter$fn__5907$fn__5908 0x7f4d793c "clojure.core$filter$fn__5907$fn__5908@7f4d793c"] #object[clojure.core$filter$fn__5907$fn__5908 0x178d13f4 "clojure.core$filter$fn__5907$fn__5908@178d13f4"] #object[clojure.core$filter$fn__5907$fn__5908 0x4e2176db "clojure.core$filter$fn__5907$fn__5908@4e2176db"] #object[clojure.core$filter$fn__5907$fn__5908 0xcc8212a "clojure.core$filter$fn__5907$fn__5908@cc8212a"] #object[clojure.core$filter$fn__5907$fn__5908 0x18583d16 "clojure.core$filter$fn__5907$fn__5908@18583d16"] #object[clojure.core$filter$fn__5907$fn__5908 0x67359f5a "clojure.core$filter$fn__5907$fn__5908@67359f5a"] #object[clojure.core$filter$fn__5907$fn__5908 0x22e7aac9 "clojure.core$filter$fn__5907$fn__5908@22e7aac9"] #object[clojure.core$filter$fn__5907$fn__5908 0x6f6b1ece "clojure.core$filter$fn__5907$fn__5908@6f6b1ece"] #object[clojure.core$filter$fn__5907$fn__5908 0x36022eb8 "clojure.core$filter$fn__5907$fn__5908@36022eb8"] #object[clojure.core$filter$fn__5907$fn__5908 0x7d06b86d "clojure.core$filter$fn__5907$fn__5908@7d06b86d"] #object[clojure.core$filter$fn__5907$fn__5908 0x62a8e4e6 "clojure.core$filter$fn__5907$fn__5908@62a8e4e6"] #object[clojure.core$filter$fn__5907$fn__5908 0x55021b13 "clojure.core$filter$fn__5907$fn__5908@55021b13"] #object[clojure.core$filter$fn__5907$fn__5908 0x72d288e5 "clojure.core$filter$fn__5907$fn__5908@72d288e5"] #object[clojure.core$filter$fn__5907$fn__5908 0x3a5f8302 "clojure.core$filter$fn__5907$fn__5908@3a5f8302"] #object[clojure.core$filter$fn__5907$fn__5908 0x1ff5cf7b "clojure.core$filter$fn__5907$fn__5908@1ff5cf7b"] #object[clojure.core$filter$fn__5907$fn__5908 0x5a6a8515 "clojure.core$filter$fn__5907$fn__5908@5a6a8515"] #object[clojure.core$filter$fn__5907$fn__5908 0x3c99ab1d "clojure.core$filter$fn__5907$fn__5908@3c99ab1d"] #object[clojure.core$filter$fn__5907$fn__5908 0x7a98681f "clojure.core$filter$fn__5907$fn__5908@7a98681f"] #object[clojure.core$filter$fn__5907$fn__5908 0x4b27ee20 "clojure.core$filter$fn__5907$fn__5908@4b27ee20"] #object[clojure.core$filter$fn__5907$fn__5908 0x45eb987c "clojure.core$filter$fn__5907$fn__5908@45eb987c"] #object[clojure.core$filter$fn__5907$fn__5908 0x345b129f "clojure.core$filter$fn__5907$fn__5908@345b129f"] #object[clojure.core$filter$fn__5907$fn__5908 0xdba5c9b "clojure.core$filter$fn__5907$fn__5908@dba5c9b"] #object[clojure.core$filter$fn__5907$fn__5908 0x7918e5e2 "clojure.core$filter$fn__5907$fn__5908@7918e5e2"] #object[clojure.core$filter$fn__5907$fn__5908 0x6029aac5 "clojure.core$filter$fn__5907$fn__5908@6029aac5"] #object[clojure.core$filter$fn__5907$fn__5908 0xc0a93b5 "clojure.core$filter$fn__5907$fn__5908@c0a93b5"] #object[clojure.core$filter$fn__5907$fn__5908 0x538b482b "clojure.core$filter$fn__5907$fn__5908@538b482b"] #object[clojure.core$filter$fn__5907$fn__5908 0x6d82904d "clojure.core$filter$fn__5907$fn__5908@6d82904d"])
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/top-streams-of-the-week
-clj꞉influencerTracker.core꞉> 
-20210309
-20210309
-clj꞉influencerTracker.core꞉> 
-(f/unparse (f/formatter "yyyyMMdd")  (time/minus (time/now) (time/days 7)))
-"20210309"
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/average
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/avrage-viewers
-clj꞉influencerTracker.core꞉> 
-(average (reduce + :views (db/get-all-influencers)))
-7250402/59
-clj꞉influencerTracker.core꞉> 
-(reduce + (map :views (db/get-all-influencers)))
-7250402
-clj꞉influencerTracker.core꞉> 
-(map :views (db/get-all-influencers))
-(34869 29005 88130 3700000 33333 98671 18169 79037 96627 32037 67539 71511 53438 65617 68023 79027 76905 39031 30458 19174 31125 19174 31125 31125 19174 17444 17436 31125 18887 18291 17436 16622 15666 14934 14022 38373 59958 72329 75788 73230 76560 88289 85262 87291 82459 94159 95040 105442 94951 106330 100691 102491 96574 90070 89833 97093 92944 121844 129214)
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/avrage-viewers
-clj꞉influencerTracker.core꞉> 
-(avrage-viewers (db/get-all-influencers))
-7250402/59
-clj꞉influencerTracker.core꞉> 
-(count (db/get-all-influencers))
-59
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/average
-clj꞉influencerTracker.core꞉> 
-(avrage-viewers (db/get-all-influencers))
-122888.1694915254
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/avrage-viewers
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/display-top-game
+; Evaluating file: layout.clj
+#'influencerTracker.layout/not-found
+clj꞉influencerTracker.layout꞉> 
+; Evaluating file: view.clj
+#'influencerTracker.view/index-page
 clj꞉influencerTracker.view꞉> 
-#'influencerTracker.core/average
+; Evaluating file: core.clj
+#'influencerTracker.core/display-statistics
 clj꞉influencerTracker.core꞉> 
-#'influencerTracker.core/avrage-viewers
+; Evaluating file: handler.clj
+#'influencerTracker.handler/app
+clj꞉influencerTracker.handler꞉> 
+#'influencerTracker.core/chart-game
 clj꞉influencerTracker.core꞉> 
-(avrage-viewers)
-122888.0
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.layout/common-layout
-clj꞉influencerTracker.layout꞉> 
-#'influencerTracker.layout/common-layout
-clj꞉influencerTracker.layout꞉> 
 #'influencerTracker.view/display-statistics
 clj꞉influencerTracker.view꞉> 
-(Math/floor (influencerTracker.core/avrage-viewers))
-122888.0
+#'influencerTracker.view/display-statistics
 clj꞉influencerTracker.view꞉> 
+; nREPL Connection was closed

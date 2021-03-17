@@ -126,26 +126,37 @@
         [:td (h (:name games))]
         [:td [:img {:src (:art games)}]]]) games)]])
 
-(defn display-statistics [games]
+(defn display-statistics [games avrage-viewers language total-games]
    [:div
-    [:h1 "Statitcs about games"]
+    [:h1 {:class "display-1"} "Statistics about influencers"]
+    [:div {:class "w-50 p-3"}
+     [:ul {:class "list-group"}
+      [:li {:class "list-group-item d-flex justify-content-between align-items-center"} "Average viewers per inluencer: "
+       [:span {:class "badge badge-primary badge-pill"} avrage-viewers]]
+      [:li {:class "list-group-item d-flex justify-content-between align-items-center"} "Most influencers stream in this language: "
+       [:span {:class "badge badge-primary badge-pill"} language]]
+      [:li {:class "list-group-item d-flex justify-content-between align-items-center"} "Games being streamed now: "
+       [:span {:class "badge badge-primary badge-pill"} total-games]]]]
     [:p "Most popular games by % of how much Influencer plays"]
-    [:p "Average viewers per inluencer: " (influencerTracker.core/avrage-viewers)]
     [:table  {:class "table"}
      [:thead {:class "thead-light"}
       [:th {:scope "col"} "#"]
       [:th {:scope "col"} "Game name"]
-      [:th {:scope "col"} "Percentage %"]]
+      [:th {:scope "col"} "Percentage %"]
+      [:th {:scope "col"} "Live channels "]
+      [:th {:scope "col"} "Live viewers"]]
      (map
       (fn [games]
         [:tr
          [:td]
          [:td (h (:game games))]
-         [:td (h (format "%.2f" (:percentage games))) "%"]]) games)]])
+         [:td (h (format "%.2f" (:percentage games))) "%"]
+         [:td (h (:channels games))]
+         [:td (h (:viewers games))]]) games)]])
 
-(defn statistic-page [games]
+(defn statistic-page [games avrage-viewers language total-games]
   (layout/common-layout
-   (display-statistics games)))
+   (display-statistics games avrage-viewers language total-games)))
 
 (defn top-game-page [games]
   (layout/common-layout

@@ -62,6 +62,23 @@
        :name (get-in x ["data" y "name"])
        :art (clojure.string/replace (get-in x ["data" y "box_art_url"]) "{width}x{height}" "150x150")))))
 
+(defn get-total-games []
+  (json/read-str
+   (:body
+    (http/get (str "https://api.twitch.tv/kraken/games/top")
+              {:headers
+               {:client-id client-id
+                :Authorization (str "Bearer " access_token)
+                :Accept "application/vnd.twitchtv.v5+json"}}))))
+
+(defn get-game-summary [game]
+  (json/read-str
+   (:body
+    (http/get (str "https://api.twitch.tv/kraken/streams/summary?game=" (clojure.string/lower-case game))
+              {:headers
+               {:client-id client-id
+                :Authorization (str "Bearer " access_token)
+                :Accept "application/vnd.twitchtv.v5+json"}}))))
 ;;CATEGORIES
 ;;
 (defn search-categories [category]
