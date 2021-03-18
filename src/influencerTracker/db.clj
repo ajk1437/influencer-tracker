@@ -10,7 +10,8 @@
    :user "root"
    :password "root"})
 
-(defn create-influencer [username game views language]
+(defn create-influencer!
+  [username game views language]
   (let [timestamp (new java.util.Date)]
   (sql/insert! db-connection :influencer [:username :game :views :language :timestamp] [username game views language timestamp])))
 
@@ -30,3 +31,16 @@
 
 (defn update-influencer [id username game views language timestamp]
   (sql/update! db-connection :influencer {:id id :username username :game game :views views :language language :timestamp timestamp} ["id = ?" id]))
+
+(defn insert-influencers [streams]
+  (map
+   (fn [streams]
+     (create-influencer!
+      (:username streams)
+      (:game_name streams)
+      (:viewer_count streams)
+      (:language streams))) streams))
+
+;; fix for Incorrect string value: '\xED\x92\x8D\xEC\x9B\x94
+;; ;; ALTER TABLE influencer MODIFY username CHAR (50) CHARACTER SET utf8mb4;
+

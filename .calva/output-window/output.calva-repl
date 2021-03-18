@@ -14,44 +14,58 @@
 ;   - `alt+up` and `alt+down` traverse up and down the REPL command history
 ;      when the cursor is after the last contents at the prompt
 ;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉>  ; Use `alt+enter` to evaluate
+(get (influencerTracker.db/get-count-influencers) "count")
+; Syntax error (ClassNotFoundException) compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\.calva\output-window\output.calva-repl:18:6).
+; influencerTracker.db
 clj꞉user꞉> 
-WARN clojure.tools.logging not found on classpath, compojure.api logging to console.
-; Syntax error (ClassNotFoundException) compiling new at (jsonista\core.clj:79:38).
-; com.fasterxml.jackson.core.exc.InputCoercionException
-clj꞉influencerTracker.twitchapi꞉> 
-; Syntax error compiling at (muuntaja\format\json.clj:1:1).
-; namespace 'jsonista.core' not found
-clj꞉influencerTracker.twitchapi꞉> 
+nil
+clj꞉influencerTracker.view꞉> 
+nil
+clj꞉influencerTracker.db꞉> 
+(get-count-influencers)
+[{:count(*) 400}]
+clj꞉influencerTracker.db꞉> 
+(get (get-count-influencers) :count)
+nil
+clj꞉influencerTracker.db꞉> 
+(get (get-count-influencers) :count(*))
+1
+clj꞉influencerTracker.db꞉> 
+(count (get-all-influencers))
+400
+clj꞉influencerTracker.db꞉> 
 nil
 clj꞉influencerTracker.twitchapi꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:77:10).
-; Unable to resolve symbol: client-id in this context
+; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:216:1).
+; Unable to resolve symbol: my-pool in this context
 clj꞉influencerTracker.twitchapi꞉> 
-; Syntax error compiling at (d:\SiRN\Clojure\ISPIT\influencer-tracker\src\influencerTracker\twitchapi.clj:77:5).
-; Unable to resolve symbol: client-id in this context
+#'influencerTracker.twitchapi/my-pool
 clj꞉influencerTracker.twitchapi꞉> 
-; Evaluating file: db.clj
-#'influencerTracker.db/update-influencer
-clj꞉influencerTracker.db꞉> 
-; Evaluating file: twitchapi.clj
-true
+#<RecurringJob id: 1, created-at: čet 01:28:21s, ms-period: 15000, initial-delay: 0, desc: "Add rank 1. influencers task", scheduled? true>
 clj꞉influencerTracker.twitchapi꞉> 
-; Evaluating file: layout.clj
-#'influencerTracker.layout/not-found
-clj꞉influencerTracker.layout꞉> 
-; Evaluating file: view.clj
-#'influencerTracker.view/index-page
-clj꞉influencerTracker.view꞉> 
-; Evaluating file: core.clj
-#'influencerTracker.core/display-statistics
-clj꞉influencerTracker.core꞉> 
-; Evaluating file: handler.clj
-#'influencerTracker.handler/app
-clj꞉influencerTracker.handler꞉> 
-#'influencerTracker.core/chart-game
-clj꞉influencerTracker.core꞉> 
-#'influencerTracker.view/display-statistics
-clj꞉influencerTracker.view꞉> 
-#'influencerTracker.view/display-statistics
-clj꞉influencerTracker.view꞉> 
-; nREPL Connection was closed
+#<RecurringJob id: 2, created-at: čet 01:28:23s, ms-period: 15000, initial-delay: 0, desc: "Add rank 2. influencers task", scheduled? true>
+clj꞉influencerTracker.twitchapi꞉> 
+#<RecurringJob id: 3, created-at: čet 01:28:24s, ms-period: 15000, initial-delay: 0, desc: "Add rank 3. influencers task", scheduled? true>
+clj꞉influencerTracker.twitchapi꞉> 
+#<RecurringJob id: 4, created-at: čet 01:28:25s, ms-period: 15000, initial-delay: 0, desc: "Add rank 4. influencers task", scheduled? true>
+clj꞉influencerTracker.twitchapi꞉> 
+#<RecurringJob id: 5, created-at: čet 01:28:27s, ms-period: 15000, initial-delay: 0, desc: "Add rank 5. influencers task", scheduled? true>
+clj꞉influencerTracker.twitchapi꞉> 
+[1][RECUR] created: čet 01:28:21s, period: 15000ms,  desc: "Add rank 1. influencers task"
+[2][RECUR] created: čet 01:28:23s, period: 15000ms,  desc: "Add rank 2. influencers task"
+[3][RECUR] created: čet 01:28:24s, period: 15000ms,  desc: "Add rank 3. influencers task"
+[4][RECUR] created: čet 01:28:25s, period: 15000ms,  desc: "Add rank 4. influencers task"
+[5][RECUR] created: čet 01:28:27s, period: 15000ms,  desc: "Add rank 5. influencers task"
+nil
+clj꞉influencerTracker.twitchapi꞉> 
+#<PoolInfo: java.util.concurrent.ScheduledThreadPoolExecutor@147d91ea[Running, pool size = 10, active threads = 0, queued tasks = 5, completed tasks = 20] 5 jobs>
+clj꞉influencerTracker.twitchapi꞉> 
+No jobs are currently scheduled.
+nil
+clj꞉influencerTracker.twitchapi꞉> 
+No jobs are currently scheduled.
+nil
+clj꞉influencerTracker.twitchapi꞉> 
+#<PoolInfo: java.util.concurrent.ScheduledThreadPoolExecutor@5ab66b5b[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0] 0 jobs>
+clj꞉influencerTracker.twitchapi꞉> 

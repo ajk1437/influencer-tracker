@@ -35,31 +35,24 @@
   (sort-by :percentage #(> %1 %2)
            (map
             (fn [game]
-              (let [game-summary (twitch/get-game-summary (first game))]
                 (hash-map
                  :game (first game)
-                 :percentage (get-percentage (second game) (count influencers))
-                 :channels (get game-summary "channels")
-                 :viewers (get game-summary "viewers"))))
+                 :percentage (get-percentage (second game) (count influencers))))
             (distinct-games influencers))))
-
-(defn top-streams-of-the-week [influencers]
-   (filter
-    #(>
-      (f/unparse (f/formatter "yyyyMMdd") (:timestamp %))
-      (f/unparse (f/formatter "yyyyMMdd")  (time/minus (time/now) (time/days 7)))
-      influencers)))
 
 (defn average [coll]
   (int
    (quot (reduce + coll) (count coll))))
 
-(defn avrage-viewers []
-  (average (map :views (db/get-all-influencers))))
+(defn avrage-viewers [influencers]
+  (hash-map
+   :average (average (map :views influencers))
+   :max (apply max (map :views influencers))
+   :mini (apply min (map :views influencers))))
 
-(defn most-watched-language []
+(defn most-watched-language [influencers]
   (key
-   (apply max-key val (distinct-language (db/get-all-influencers)))))
+   (apply max-key val (distinct-language influencers))))
 
 ;; (chart/view
 ;;  (chart/pie-chart
@@ -81,9 +74,9 @@
 (defn show-update-view [id]
   (view/update-influencer-form (db/get-influencer-by-id id)))
 
-(defn create-influencer [username game views language]
+(defn create-influencer! [username game views language]
   (when-not (str/blank? username)
-    (db/create-influencer username game views language)))
+    (db/create-influencer! username game views language)))
 
 (defn delete-influencer [id]
   (when-not (str/blank? id)
@@ -100,7 +93,7 @@
 (defn display-top-game []
   (view/top-game-page (twitch/get-map-top-games)))
 
-(defn display-statistics []
-  (view/statistic-page (chart-game (db/get-all-influencers)) (avrage-viewers) (most-watched-language) (games-being-streamed-now)))
+(defn display-statistics [influencers]
+  (view/statistic-page (chart-game influencers) (avrage-viewers influencers) (most-watched-language influencers) (games-being-streamed-now)))
 
 
