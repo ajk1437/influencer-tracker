@@ -2,18 +2,18 @@
   (:use compojure.core
         ring.util.json-response
         ring.adapter.jetty)
-   (:require [clojure.string :as str]
-             [ring.middleware.resource :refer [wrap-resource]]
-             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-             [influencerTracker.db :as db]
-             [influencerTracker.view :as view]
-             [influencerTracker.twitchapi :as twitch]
-             [clojure.data.json :as json]
-             [cheshire.core :refer :all]
-             [com.hypirion.clj-xchart :as chart]
-             [clj-time.format :as f]
-             [clj-time.core :as time]
-             [clj-time.coerce :as tc]))
+  (:require [clojure.string :as str]
+            [ring.middleware.resource :refer [wrap-resource]]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [influencerTracker.db :as db]
+            [influencerTracker.view :as view]
+            [influencerTracker.twitchapi :as twitch]
+            [clojure.data.json :as json]
+            [cheshire.core :refer :all]
+            [com.hypirion.clj-xchart :as chart]
+            [clj-time.format :as f]
+            [clj-time.core :as time]
+            [clj-time.coerce :as tc]))
 
 (defn is-numeric [x]
   {:pre [(number? x)]})
@@ -38,9 +38,9 @@
   (sort-by :percentage #(> %1 %2)
            (map
             (fn [game]
-                (hash-map
-                 :game (first game)
-                 :percentage (get-percentage (second game) (count influencers))))
+              (hash-map
+               :game (first game)
+               :percentage (get-percentage (second game) (count influencers))))
             (distinct-games influencers))))
 
 (defn average [coll]

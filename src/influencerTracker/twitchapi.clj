@@ -8,7 +8,7 @@
             [clj-time.coerce :as tc]
             [clj-time.format :as f]))
 
-;; for underlined errors
+;; for underlined errors 
 ;;(declare mk-pool stop-and-reset-pool! every show-schedule)
 
 (def baseURL "https://api.twitch.tv/helix/")
@@ -189,7 +189,7 @@
                 :content-type content-type}}))))
 
 (defn get-user [user_id]
-   "Gets information about one or more specified Twitch users"
+  "Gets information about one or more specified Twitch users"
   (json/read-str
    (:body
     (http/get (str baseURL "users?id=" user_id)
