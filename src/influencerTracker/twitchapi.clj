@@ -8,7 +8,7 @@
             [clj-time.coerce :as tc]
             [clj-time.format :as f]))
 
-;; 
+;; for underlined errors
 ;;(declare mk-pool stop-and-reset-pool! every show-schedule)
 
 (def baseURL "https://api.twitch.tv/helix/")
@@ -26,7 +26,7 @@
 
 ;; GAMES
 (defn get-top-games []
-  "Return top 10 games with most viewers"
+  "Get top 10 games with most viewers"
   (json/read-str
    (:body
     (http/get (str baseURL "games/top")
@@ -36,11 +36,11 @@
                 :content-type content-type}}))))
 
 (defn get-top-game []
-  "Return top games with most viewers"
+  "Get top games with most viewers"
   (get-in (get-top-games) ["data" 0]))
 
 (defn get-game-by-id [id]
-  "Return games with id"
+  "Get games with id"
   (json/read-str
    (:body
     (http/get (str baseURL "games?id=" id)
@@ -50,14 +50,15 @@
                 :content-type content-type}}))))
 
 (defn get-top-game-name [rank]
-  "Return top games name"
+  "Get top games name"
   (get-in (get-top-games) ["data" rank "name"]))
 
 (defn get-top-game-box-art-url [rank]
-  "Return top games image width:100 height:100"
+  "Get top games image width:100 height:100"
   (clojure.string/replace (get-in (get-top-games) ["data" rank "box_art_url"]) "{width}x{height}" "150x150"))
 
 (defn get-game-summary [game]
+  "Get summary of game live channels and live viewers"
   (json/read-str
    (:body
     (http/get (str "https://api.twitch.tv/kraken/streams/summary?game=" (clojure.string/lower-case game))
@@ -67,6 +68,7 @@
                 :Accept "application/vnd.twitchtv.v5+json"}}))))
 
 (defn get-map-top-games []
+  "Create hash-map for top games on twitch"
   (let [x (get-top-games)]
     (for [y (range 0 9)]
       (hash-map
@@ -77,6 +79,7 @@
        :viewers (get (get-game-summary (get-in x ["data" y "name"])) "viewers")))))
 
 (defn get-total-games []
+  "Get number of total games streaming on twitch"
   (json/read-str
    (:body
     (http/get (str "https://api.twitch.tv/kraken/games/top")
@@ -89,6 +92,7 @@
 ;;CATEGORIES
 ;;
 (defn search-categories [category]
+  "Returns a list of games or categories that match the query via name"
   (json/read-str
    (:body
     (http/get (str baseURL "search/categories?query=" category)
@@ -98,6 +102,7 @@
                 :content-type content-type}}))))
 
 (defn search-channels [channel live]
+  "Returns channelsthat match the query via channel name and who are live right now"
   (json/read-str
    (:body
     (http/get (str baseURL "search/channels?query=" channel "&live_only=" live)
@@ -107,6 +112,7 @@
                 :content-type content-type}}))))
 
 (defn get-streams [game_id]
+  "Gets information about active streams for game"
   (json/read-str
    (:body
     (http/get (str baseURL "streams?game_id=" game_id)
@@ -115,10 +121,11 @@
                 :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
 
-(defn get-streams-user [name]
+(defn get-streams-user [user_id]
+  "Gets information about user stream for user id"
   (json/read-str
    (:body
-    (http/get (str baseURL "streams?user_id=" name)
+    (http/get (str baseURL "streams?user_id=" user_id)
               {:headers
                {:client-id client-id
                 :Authorization (str "Bearer " access_token)
@@ -127,6 +134,7 @@
 
 ;; STREAMS
 (defn get-streams-top []
+  "Gets information about active streams"
   (json/read-str
    (:body
     (http/get (str baseURL "streams")
@@ -136,6 +144,7 @@
                 :content-type content-type}}))))
 
 (defn get-map-top-stream []
+  "Create hash-map for first 10 streams"
   (let [x (get-streams-top)]
     (for [y (range 0 10)]
       (hash-map
@@ -148,23 +157,29 @@
        :language (get-in x ["data" y "language"])))))
 
 (defn get-stream-id [stream x]
+  "Get language from user id"
   (get-in stream ["data" x "user_id"]))
 
 (defn get-stream-name [stream x]
+  "Get language from username"
   (get-in stream ["data" x "user_name"]))
 
 (defn get-stream-gamename [stream x]
+  "Get language from game name"
   (get-in stream ["data" x "game_name"]))
 
 (defn get-stream-viewer-count [stream x]
+  "Get language from view count"
   (get-in stream ["data" x "viewer_count"]))
 
 (defn get-stream-language [stream x]
+  "Get language from stream"
   (get-in stream ["data" x "language"]))
 
 ;;CHANNELS
 
 (defn get-channel-info [id]
+  "Returns a list of channels that match the query via broadcaster_id"
   (json/read-str
    (:body
     (http/get (str baseURL "channels?broadcaster_id=" id)
@@ -174,6 +189,7 @@
                 :content-type content-type}}))))
 
 (defn get-user [user_id]
+   "Gets information about one or more specified Twitch users"
   (json/read-str
    (:body
     (http/get (str baseURL "users?id=" user_id)
@@ -182,8 +198,10 @@
                 :Authorization (str "Bearer " access_token)
                 :content-type content-type}}))))
 
+;; Create a pool
 (def my-pool (mk-pool))
 
+;; Task 1 get infulencer whose stream is rank as 1.
 (every 900000
        #(let [streams (get-streams-top)]
           (db/create-influencer!
@@ -194,6 +212,7 @@
        my-pool
        :desc "Add rank 1. influencers task")
 
+;; Task 2 get infulencer whose stream is rank as 2.
 (every 900000
        #(let [streams (get-streams-top)]
           (db/create-influencer!
@@ -204,6 +223,7 @@
        my-pool :desc
        "Add rank 2. influencers task")
 
+;; Task 3 get infulencer whose stream is rank as 3.
 (every 900000
        #(let [streams (get-streams-top)]
           (db/create-influencer!
@@ -214,6 +234,7 @@
        my-pool :desc
        "Add rank 3. influencers task")
 
+;; Task 4 get infulencer whose stream is rank as 4.
 (every 900000
        #(let [streams (get-streams-top)]
           (db/create-influencer!
@@ -224,6 +245,7 @@
        my-pool :desc
        "Add rank 4. influencers task")
 
+;; Task 5 get infulencer whose stream is rank as 5.
 (every 900000
        #(let [streams (get-streams-top)]
           (db/create-influencer!
@@ -234,8 +256,9 @@
        my-pool :desc
        "Add rank 5. influencers task")
 
-
+;;show that task are working 
 (show-schedule my-pool)
 
-(stop-and-reset-pool! my-pool :strategy :kill)
+;; stop collecting data
+;;(stop-and-reset-pool! my-pool :strategy :kill)
 

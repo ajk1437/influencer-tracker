@@ -22,16 +22,19 @@
   (/ (* p 100.0) total))
 
 (defn distinct-games [influencers]
+  "Returns query with distinct game and number of inluencers who played them"
   (frequencies (map :game influencers)))
 
 (defn distinct-username [influencers]
+  "Returns query with distinct influencers and how much time did they stay in top 10 streams on twitch"
   (frequencies (map :username influencers)))
 
 (defn distinct-language [influencers]
+  "Returns query with distinct language"
   (frequencies (map :language influencers)))
 
-;;(get (twitchapi/get-game-summary (:game games)) "channels")
 (defn chart-game [influencers]
+  "Returns games and precentage of total games played for each games"
   (sort-by :percentage #(> %1 %2)
            (map
             (fn [game]
@@ -41,18 +44,18 @@
             (distinct-games influencers))))
 
 (defn average [coll]
-  (int
-   (quot (reduce + coll) (count coll))))
+  (int (quot (reduce + coll) (count coll))))
 
 (defn avrage-viewers [influencers]
+  "Returns hash-map with average, max and min viewers for influencers"
   (hash-map
    :average (average (map :views influencers))
    :max (apply max (map :views influencers))
    :mini (apply min (map :views influencers))))
 
 (defn most-watched-language [influencers]
-  (key
-   (apply max-key val (distinct-language influencers))))
+  "Returns the most used language"
+  (key (apply max-key val (distinct-language influencers))))
 
 ;; (chart/view
 ;;  (chart/pie-chart
@@ -63,9 +66,11 @@
 ;;    :annotation-distance 0.82}))
 
 (defn games-being-streamed-now []
+  "Returns number of games being streamed right now"
   (get (twitch/get-total-games) "_total"))
 
 (defn display-all-influencers []
+  "Sort influencer by viewers"
   (view/index-page (sort-by :views #(> %1 %2) (db/get-all-influencers))))
 
 (defn show-create-view []
