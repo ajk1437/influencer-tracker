@@ -4,7 +4,9 @@ This is web application which contains data collcted from twitch.tv about most p
 
 This application is written in Clojure with Leiningen, more about that you can check here: https://leiningen.org/.   
 Application is build with Compojure template   
+  
 ```lein new compojure-app influence-tracker```.  
+  
 Libraries used in this project are:  
 *[Ring](https://github.com/ring-clojure/ring)  
 *[Clojure/java.jdbc](https://github.com/clojure/java.jdbc)  
