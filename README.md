@@ -37,7 +37,7 @@ on this page zou can insert influencer.
   
     
 ## How to run
-You can run this application buy downloading it and navigate to folder influencer-tracker\src\influencerTracker and use command  
+Before you run application create mysql database with script in influencers.sql file. After that navigate to folder influencer-tracker\src\influencerTracker and use command  
 ```lein ring server```  
 
   
