@@ -21,22 +21,22 @@ For collecting data application is using at-at simplee function scheduler, every
   
     
 ## Homepage 
-- this page contains a list of all the influencers collected in the database, you can delete or update them. There is also a count of how many data is there in the database (Influencers count).  
+this page contains a list of all the influencers collected in the database, you can delete or update them. There is also a count of how many data is there in the database (Influencers count).  
   
 ## Statistics page 
-- here we have the statistics about most played games shown in table and also the percentage a specific game takes of all the collected data. We also have the average, min and max peek viewers for influencers and most streamed language, and how many games are played at this moment.  
+here we have the statistics about most played games shown in table and also the percentage a specific game takes of all the collected data. We also have the average, min and max peek viewers for influencers and most streamed language, and how many games are played at this moment.  
   
 ## Top live channel 
-- is showing 10 most popular stream at this moment on twitch. In this table you can see Twitch user id, Username, Thumbnail (screenshoot from live stream), game name, viewers count and language.  
+is showing 10 most popular stream at this moment on twitch. In this table you can see Twitch user id, Username, Thumbnail (screenshoot from live stream), game name, viewers count and language.  
   
 ## Top game 
-- shows 10 most popular games at this moment on twitch. It this table you can see game art, game name, how many live channels are there and how many live viewers.  
+shows 10 most popular games at this moment on twitch. It this table you can see game art, game name, how many live channels are there and how many live viewers.  
   
   
+## How to run
 You can run this application buy downloading it and navigate to folder influencer-tracker\src\influencerTracker and use command  
 ```lein ring server```  
   
-    
       
 # Reference:  
 Dmitri Sotnikov, Web Development with Clojure_ Build Bulletproof Web Apps with Less Code (2016, Pragmatic Bookshelf)  
