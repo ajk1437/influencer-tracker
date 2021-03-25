@@ -14,10 +14,22 @@ Libraries used in this project are:
 [Clj-time](https://github.com/clj-time/clj-time)  
 [Overtone/at-at](https://github.com/overtone/at-at)  
 
-For collecting data application is using at-at simplee function scheduler, every 15 minutes data is insert into MySQL database. Data about influencer which is collecting, example:  
+For collecting data application is using at-at simplee function scheduler, every 15 minutes data is insert into MySQL database. Data about influencer which is collecting is looking like this, example:  
 | ID            | Username      | Game          |    Views      | Language      | Timestamp     |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 1  | summit1g  | Content Cell  | Grand Theft Auto V'  | 34444  | en  | 2021-03-01T13:48:59.10|
+| 1  | summit1g  | Content Cell  | Grand Theft Auto V'  | 34444  | en  | 2021-03-01T13:48:59.10|  
+  
+Homepage - this page contains a list of all the influencers collected in the database, you can delete or update them. There is also a count of how many data is there in the database (Influencers count).  
+Statistics page - here we have the statistics about most played games shown in table and also the percentage a specific game takes of all the collected data. We also have the average, min and max peek viewers for influencers and most streamed language, and how many games are played at this moment.  
+  
+Top live channel - is showing 10 most popular stream at this moment on twitch. In this table you can see Twitch user id, Username, Thumbnail (screenshoot from live stream), game name, viewers count and language.  
+  
+ Top game - shows 10 most popular games at this moment on twitch. It this table you can see game art, game name, how many live channels are there and how many live viewers.  
+ 
+ 
+ 
+ 
+
 
 
  
