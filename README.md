@@ -8,10 +8,18 @@ Application is build with Compojure template
 ```lein new compojure-app influence-tracker```.  
   
 Libraries used in this project are:  
-*[Ring](https://github.com/ring-clojure/ring)  
-*[Clojure/java.jdbc](https://github.com/clojure/java.jdbc)  
-*[Compojure](https://github.com/weavejester/compojure)  
-*[Clj-time](https://github.com/clj-time/clj-time)  
-*[Overtone/at-at](https://github.com/overtone/at-at)  
+[Ring](https://github.com/ring-clojure/ring)  
+[Clojure/java.jdbc](https://github.com/clojure/java.jdbc)  
+[Compojure](https://github.com/weavejester/compojure)  
+[Clj-time](https://github.com/clj-time/clj-time)  
+[Overtone/at-at](https://github.com/overtone/at-at)  
+
+For collecting data application is using at-at simplee function scheduler, every 15 minutes data is insert into MySQL database. Data about influencer which is collecting, example:  
+| ID            | Username      | Game          |    Views      | Language      | Timestamp     |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 1  | summit1g  | Content Cell  | Grand Theft Auto V'  | 34444  | en  | 2021-03-01T13:48:59.10|
+
+
+ 
 
 
