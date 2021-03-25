@@ -8,11 +8,11 @@ Application is build with Compojure template
 ```lein new compojure-app influence-tracker```.  
   
 ## Libraries used in this project are:  
-[Ring](https://github.com/ring-clojure/ring)  
-[Clojure/java.jdbc](https://github.com/clojure/java.jdbc)  
-[Compojure](https://github.com/weavejester/compojure)  
-[Clj-time](https://github.com/clj-time/clj-time)  
-[Overtone/at-at](https://github.com/overtone/at-at)  
+*[Ring](https://github.com/ring-clojure/ring)  
+*[Clojure/java.jdbc](https://github.com/clojure/java.jdbc)  
+*[Compojure](https://github.com/weavejester/compojure)  
+*[Clj-time](https://github.com/clj-time/clj-time)  
+*[Overtone/at-at](https://github.com/overtone/at-at)  
 
 For collecting data application is using at-at simplee function scheduler, every 15 minutes data is insert into MySQL database. Data about influencer which is collecting is looking like this, example:  
 | ID            | Username      | Game          |    Views      | Language      | Timestamp     |
@@ -32,10 +32,14 @@ is showing 10 most popular stream at this moment on twitch. In this table you ca
 ## Top game 
 shows 10 most popular games at this moment on twitch. It this table you can see game art, game name, how many live channels are there and how many live viewers.  
   
+## Add influencer
+on this page zou can insert influencer.
   
+    
 ## How to run
 You can run this application buy downloading it and navigate to folder influencer-tracker\src\influencerTracker and use command  
 ```lein ring server```  
+
   
       
 # Reference:  
